@@ -20,9 +20,11 @@ minuteServo = servo.Servo(pca.channels[6])
 #code body#
 ###########
 
-timeNOW = time.localtime()
-hour = timeNOW.tm_hour
-minute = timeNOW.tm_min
+while True:
+    timeNOW = time.localtime()
+    hour = timeNOW.tm_hour
+    minute = timeNOW.tm_min
+
 
 
 
