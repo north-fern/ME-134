@@ -16,6 +16,15 @@ pca.frequency = 50
 hourServo = servo.Servo(pca.channels[3])
 minuteServo = servo.Servo(pca.channels[6])
 
+######################
+#function definitions#
+######################
+def set_hour_servo(hour):
+    print("Doing Something")
+
+def set_minute_servo(minute):
+    print("Doing Something Else")
+
 ###########
 #code body#
 ###########
@@ -24,8 +33,8 @@ while True:
     timeNOW = time.localtime()
     hour = timeNOW.tm_hour
     minute = timeNOW.tm_min
-
-
+    set_hour_servo(hour)
+    set_minute_servo(minute)
 
 
 
