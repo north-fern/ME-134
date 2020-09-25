@@ -20,26 +20,38 @@ minuteServo = servo.Servo(pca.channels[6])
 #function definitions#
 ######################
 def set_hour_servo(hour, minute):
-    print("Doing Something")
+    print("Doing Something HOURS")
     if hour > 12:
         hourNEW = hour%12
         hour = hourNEW
         print(hour)
 
     if minute < 12:
-        hourServo.angle = ((hour-1)*15 + 0)
+        angle = ((hour-1)*15 + 0)
+        hourServo.angle = (angle)
+        print(angle)
     if minute < 24:
-        hourServo.angle = ((hour-1)*15 + 4)
+        angle = ((hour-1)*15 + 3)
+        hourServo.angle = (angle)
+        print(angle)
     if minute < 36:
-        hourServo.angle = ((hour-1)*15 + 8)
+        angle = ((hour-1)*15 + 6)
+        hourServo.angle = (angle)
+        print(angle)
     if minute < 48:
-        hourServo.angle = ((hour-1)*15 + 11)
+        angle = ((hour-1)*15 + 9)
+        hourServo.angle = (angle)
+        print(angle)
     if minute < 60:
-        hourServo.angle = ((hour-1)*15 + 14)
+        angle = ((hour-1)*15 + 12)
+        hourServo.angle = (angle)
+        print(angle)
 
 def set_minute_servo(minute):
-    print("Doing Something Else")
-    minuteServo.angle = (minute*3)
+    print("Doing Something Else MINUTES")
+    angle = minute*3
+    minuteServo.angle = (angle)
+    print(angle)
 
 
 hourServo.angle = (0)
@@ -52,7 +64,7 @@ while True:
     timeNOW = time.localtime()
     hour = timeNOW.tm_hour
     minute = timeNOW.tm_min
-    print(timeNOW)
+    print(hour + minute)
     set_hour_servo(hour, minute)
     set_minute_servo(minute)
     time.sleep(10)
