@@ -66,7 +66,7 @@ def normal_time():
         set_minute_servo(minute)
         time.sleep(10)
 
-def rapid_time()
+def rapid_time():
     hour = 0
     minute = 0
     while True:
