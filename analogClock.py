@@ -72,6 +72,7 @@ def rapid_time():
     while True:
             set_hour_servo(hour, minute)
             set_minute_servo(minute)
+            time.sleep(1)
             minute = minute + 1
             if minute == 60:
                 hour = hour + 1
