@@ -55,7 +55,7 @@ while True:
     print(timeNOW)
     set_hour_servo(hour, minute)
     set_minute_servo(minute)
-    wait(10)
+    time.wait(10)
 
 
 
