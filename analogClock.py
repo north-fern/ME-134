@@ -26,6 +26,9 @@ def set_hour_servo(hour, minute):
         hour = hourNEW
         print(hour)
 
+    if hour == 0:
+        hour = 12
+
     if minute < 12:
         angle = ((hour-1)*15 + 0)
         hourServo.angle = (angle)
