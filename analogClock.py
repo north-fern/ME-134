@@ -48,7 +48,7 @@ while True:
     hour = timeNOW.tm_hour
     minute = timeNOW.tm_min
     print(timeNOW)
-    set_hour_servo(hour)
+    set_hour_servo(hour, minute)
     set_minute_servo(minute)
     wait(10)
 
