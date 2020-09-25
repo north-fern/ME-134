@@ -50,6 +50,7 @@ while True:
     print(timeNOW)
     set_hour_servo(hour)
     set_minute_servo(minute)
+    wait(10)
 
 
 
