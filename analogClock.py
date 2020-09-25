@@ -47,6 +47,7 @@ while True:
     timeNOW = time.localtime()
     hour = timeNOW.tm_hour
     minute = timeNOW.tm_min
+    print(timeNOW)
     set_hour_servo(hour)
     set_minute_servo(minute)
 
