@@ -72,6 +72,12 @@ def rapid_time():
     while True:
             set_hour_servo(hour, minute)
             set_minute_servo(minute)
+            minute = minute + 1
+            if minute == 60:
+                hour = hour + 1
+                minute = 0
+            if hour == 13:
+                hour = 1
             
 
 ###########
