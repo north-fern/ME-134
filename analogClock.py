@@ -112,8 +112,11 @@ This function should demonstrate the clock moving to a specific time, 6:30
 '''
 
 def preset():
-    set_hour_servo(6,30)
-    set_minute_servo(30)
+    preset_hour = int(input("WHAT HOUR? "))
+    preset_min = int(input("WHAT MINUTES? "))
+
+    set_hour_servo(preset_hour, preset_min)
+    set_minute_servo(preset_min)
 
 ###########
 #code body#
