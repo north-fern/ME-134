@@ -1,6 +1,12 @@
-#https://github.com/adafruit/Adafruit_CircuitPython_PCA9685/blob/master/examples/pca9685_servo.py
-#basic form from here ^^
+'''
+For reference in learing how to control the servos with the adafruit 
+motor and adafruit pca libraries, the following website was helpful in
+showing examples on how to use the code properly
 
+https://github.com/adafruit/Adafruit_CircuitPython_PCA9685/blob/master/
+examples/pca9685_servo.py
+
+'''
 import time
 from adafruit_motor import servo
 from board import SCL, SDA
