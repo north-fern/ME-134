@@ -18,6 +18,7 @@ for i in range(180):
         servo0.angle = i
         servo1.angle = i
         time.sleep(.1)
+stop = input("CONTINUE TEST? ")
 
 print("ENDING TEST")
 
