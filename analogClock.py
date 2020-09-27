@@ -111,7 +111,7 @@ This function should demonstrate the clock moving to a specific time, 6:30
 
 '''
 
-def preset()
+def preset():
     set_hour_servo(6,30)
     set_minute_servo(30)
 
