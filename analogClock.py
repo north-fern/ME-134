@@ -79,7 +79,10 @@ def rapid_time():
                 minute = 0
             if hour == 13:
                 hour = 1
-            
+
+def preset()
+    set_hour_servo(6,30)
+    set_minute_servo(30)
 
 ###########
 #code body#
@@ -87,11 +90,13 @@ def rapid_time():
 hourServo.angle = (0)
 minuteServo.angle = (0)
 
-button = input("Button Input: Type R for Rapid, N for normal")
+button = input("Button Input: Type R for Rapid, N for normal, P for Pre-Set (6:30)")
 if button == 'N':
     normal_time()
 elif button == 'R':
     rapid_time()
+elif button == "P"
+    preset()
 
 #ENDING I2C Connection!
 pca.deinit()
