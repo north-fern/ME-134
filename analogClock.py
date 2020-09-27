@@ -126,7 +126,7 @@ if button == 'N':
     normal_time()
 elif button == 'R':
     rapid_time()
-elif button == "P"
+elif button == "P":
     preset()
 
 #ENDING I2C Connection!
