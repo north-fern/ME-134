@@ -107,7 +107,7 @@ def rapid_time():
 
 
 '''
-This function should demonstrate the clock moving to a specific time, 6:30
+This function should demonstrate the clock moving to a specific time
 
 '''
 
@@ -124,7 +124,7 @@ def preset():
 hourServo.angle = (0)
 minuteServo.angle = (0)
 
-button = input("Button Input: Type R for Rapid, N for normal, P for Pre-Set (6:30)")
+button = input("Button Input: Type R for Rapid, N for normal, P for Pre-Set")
 if button == 'N':
     normal_time()
 elif button == 'R':
