@@ -5,23 +5,35 @@ from adafruit_motor import servo
 from board import SCL, SDA
 import busio
 from adafruit_pca9685 import PCA9685
+import RPi.GPIO as GPIO
 
+#setting up serial communication with servo board
 i2c_bus  = busio.I2C(SCL, SDA)
-
 pca = PCA9685(i2c_bus)
-
 pca.frequency = 50
 
+# declaring servos
 shoulder = servo.Servo(pca.channels[3])
 elbow= servo.Servo(pca.channels[6])
-
+pen = servo.Servo(pca.channels[9])
+ 
+#setting lengths for arms
 length1 = 1
 length2 = 2
 
+#setting unit step of letters
 unitstep = 1
 
+#setting up button
+#https://raspberrypihq.com/use-a-push-button-with-raspberry-pi-gpio/
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(10, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
+#set to pin 10 - connect from pin 10 to 3.3 power w/ resistor
 
-##FIND MOTOR ANGLES ##
+#######################
+## FIND MOTOR ANGLES ##
+#######################
 def theta1, theta2 = getAngles(x,y)
     theta2 = math.acos(((x^2) + (y^2) - (length1^2) - (length2^2)/(2*length2*length1)))
     a = length1 + length2*cos(theta2)
@@ -29,7 +41,24 @@ def theta1, theta2 = getAngles(x,y)
     theta1 = math.asin(y/(a*b))
     return theta1, theta2
 
+#####################
+## PEN DEFINITIONS ##
+#####################
+def pen_up():
+    i = 0
+    while GPIO.input(10) != GPIO.HIGH:
+        pen.angle() = i+1
+        i = i + 1
+    
+def pen_down():
+        i = 50
+    while GPIO.input(10) != GPIO.HIGH:
+        pen.angle() = i-1
+        i = i - 1
+
+######################
 ## MOTION FUNCTIONS ##
+######################
 def nx,ny = up(x, y, WRITE_BOOL):
     
     nx = x
@@ -40,8 +69,8 @@ def nx,ny = up(x, y, WRITE_BOOL):
         pen_down()
     else:
         pen_up()
-    shoulder.angle(an1)
-    elbow.angle(an2)
+    shoulder.angle = an1
+    elbow.angle = an2
     return nx,ny
 
 def nx,ny = down(x, y, WRITE_BOOL):
@@ -54,8 +83,8 @@ def nx,ny = down(x, y, WRITE_BOOL):
         pen_down()
     else:
         pen_up()
-    shoulder.angle(an1)
-    elbow.angle(an2)
+    shoulder.angle = an1
+    elbow.angle = an2
     return nx,ny
 
 def nx,ny = left(x, y, WRITE_BOOL):
@@ -68,8 +97,8 @@ def nx,ny = left(x, y, WRITE_BOOL):
         pen_down()
     else:
         pen_up()
-    shoulder.angle(an1)
-    elbow.angle(an2)
+    shoulder.angle = an1
+    elbow.angle = an2
     return nx,ny
 
 def nx,ny = right(x, y, WRITE_BOOL):
@@ -82,8 +111,8 @@ def nx,ny = right(x, y, WRITE_BOOL):
         pen_down()
     else:
         pen_up()
-    shoulder.angle(an1)
-    elbow.angle(an2)
+    shoulder.angle = an1
+    elbow.angle = an2
     return nx,ny
 
 def nx,ny = down_diag_l2r(x, y, WRITE_BOOL):
@@ -96,8 +125,8 @@ def nx,ny = down_diag_l2r(x, y, WRITE_BOOL):
         pen_down()
     else:
         pen_up()
-    shoulder.angle(an1)
-    elbow.angle(an2)
+    shoulder.angle = an1
+    elbow.angle = an2
     return nx,ny
 
 def nx,ny = down_diag_r2l(x, y, WRITE_BOOL):
@@ -110,8 +139,8 @@ def nx,ny = down_diag_r2l(x, y, WRITE_BOOL):
         pen_down()
     else:
         pen_up()
-    shoulder.angle(an1)
-    elbow.angle(an2)
+    shoulder.angle = an1
+    elbow.angle = an2
     return nx,ny
 
 def nx,ny = up_diag_l2r(x, y, WRITE_BOOL):
@@ -124,8 +153,8 @@ def nx,ny = up_diag_l2r(x, y, WRITE_BOOL):
         pen_down()
     else:
         pen_up()
-    shoulder.angle(an1)
-    elbow.angle(an2)
+    shoulder.angle = an1
+    elbow.angle = an2
     return nx,ny
 
 def nx,ny = up_diag_r2l(x, y, WRITE_BOOL):
@@ -138,12 +167,13 @@ def nx,ny = up_diag_r2l(x, y, WRITE_BOOL):
         pen_down()
     else:
         pen_up()
-    shoulder.angle(an1)
-    elbow.angle(an2)
+    shoulder.angle = an1
+    elbow.angle = an2
     return nx,ny
 
-
+#######################
 ## LETTER DEFINITONS ##
+#######################
 def ex,ey = A(x, y):
     x1,y1 = up(x,y,T)
     x2,y2 = up(x1,y1,T)
@@ -562,8 +592,9 @@ def nx, ny = execute_letters(letter, x, y):
         nx, ny = Z(x,y)
         return nx, ny
 
-
+####################
 ## MAIN FUNCTIONS ##
+####################
 
 while True:
     x = 0
