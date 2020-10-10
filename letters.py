@@ -154,7 +154,7 @@ def ex,ey = A(x, y):
     x7,y7 = up(x6,y6,F)
     x8,y8 = left(x7,y7,T)
     x9,y9 = left(x8,y8,T)
-    x10,y10 = down_diag_r2l(x9,y9,F)
+    x10,y10 = down_diag_l2r(x9,y9,F)
     x11,y11 = right(x10,y10,F)
     ex,ey = right(x11,y11,F)
     return ex,ey
@@ -570,4 +570,6 @@ while True:
     y = 0
     letters = input("WHAT LETTERS DO YOU WANT (all caps please)?  ")
     for i in length(letters):
-        execute_letter(lettesr[i])
+        nx, ny = execute_letter(letters[i], x, y)
+        x = nx
+        y = ny
