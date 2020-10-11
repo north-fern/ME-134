@@ -42,6 +42,7 @@ def getAngles(x,y):
     c = a/b
     #print(c)
     theta2 = math.acos(c)
+    print("THETA 2 is " + str(theta2))
     d = length1 + length2*math.cos(theta2)
     print(d)
     e = length2*math.sin(theta2)*((x + length2*math.sin(theta2))/(length1 + length2*math.cos(theta2)))
