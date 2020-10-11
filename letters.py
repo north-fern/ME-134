@@ -42,16 +42,17 @@ def getAngles(x,y):
     c = a/b
     #print(c)
     theta2 = math.acos(c)
+    print("A B C are " + str(a) + " "+ str(b) + " " + str(c))
     print("THETA 2 is " + str(theta2))
     d = length1 + length2*math.cos(theta2)
-    print(d)
+    #print(d)
     e = length2*math.sin(theta2)*((x + length2*math.sin(theta2))/(length1 + length2*math.cos(theta2)))
-    print(e)
+    #print(e)
     if e == 0:
         h = 0
     else:
         h = y/(d*e)
-
+    print("D and E are " + str(d) + " " + str(e))
     theta1 = math.asin(h)
     print(str(theta1) + "," + str(theta2))
     return theta1, theta2
