@@ -14,7 +14,7 @@ pca.frequency = 50
 
 # declaring servos
 shoulder = servo.Servo(pca.channels[0])
-elbow= servo.Servo(pca.channels[3])
+elbow= servo.Servo(pca.channels[4])
 #pen = servo.Servo(pca.channels[6])
  
 #setting lengths for arms
