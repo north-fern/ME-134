@@ -13,7 +13,7 @@ pca.frequency = 50
 servo0 = servo.Servo(pca.channels[0])
 servo1 = servo.Servo(pca.channels[4])
 print("STARTING TEST")
-
+'''
 for i in range(180):
         servo0.angle = i
         time.sleep(.5)
@@ -30,4 +30,6 @@ for i in range(180):
         time.sleep(.5)
 
 print("TEST COMPLETE")
-pca.deinit()
+pca.deinit()'''
+
+servo1.angle = 90
