@@ -18,12 +18,12 @@ elbow= servo.Servo(pca.channels[3])
 #pen = servo.Servo(pca.channels[6])
  
 #setting lengths for arms
-length1 = 10
-length2 = 10
+length1 = 15
+length2 = 15
 wait_time = .5
 
 #setting unit step of letters
-unitstep = 3
+unitstep = 6
 
 #setting up button
 #https://raspberrypihq.com/use-a-push-button-with-raspberry-pi-gpio/
@@ -55,7 +55,7 @@ def getAngles(x,y):
         h = y/(d*e)
     print("D and E are " + str(d) + " " + str(e))
     theta1 = math.asin(h) * 180/3.141592
-    theta2 = theta2 * 180/3.141592
+    theta2 = theta2 * 1800/3.141592
     print(str(theta1) + "," + str(theta2))
     return theta1 , theta2
 
