@@ -604,7 +604,7 @@ while True:
     x = 0
     y = 0
     letters = input("WHAT LETTERS DO YOU WANT (all caps please)?  ")
-    for i in length(letters):
+    for i in len(letters):
         nx, ny = execute_letter(letters[i], x, y)
         x = nx
         y = ny
