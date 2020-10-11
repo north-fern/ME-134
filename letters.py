@@ -13,9 +13,9 @@ pca = PCA9685(i2c_bus)
 pca.frequency = 50
 
 # declaring servos
-shoulder = servo.Servo(pca.channels[3])
-elbow= servo.Servo(pca.channels[6])
-pen = servo.Servo(pca.channels[9])
+shoulder = servo.Servo(pca.channels[0])
+elbow= servo.Servo(pca.channels[3])
+pen = servo.Servo(pca.channels[6])
  
 #setting lengths for arms
 length1 = 1
@@ -45,16 +45,20 @@ def theta1, theta2 = getAngles(x,y)
 ## PEN DEFINITIONS ##
 #####################
 def pen_up():
+    '''
     i = 0
     while GPIO.input(10) != GPIO.HIGH:
         pen.angle() = i+1
         i = i + 1
+        '''
     
 def pen_down():
+    '''
         i = 50
     while GPIO.input(10) != GPIO.HIGH:
         pen.angle() = i-1
         i = i - 1
+        '''
 
 ######################
 ## MOTION FUNCTIONS ##
