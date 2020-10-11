@@ -649,7 +649,10 @@ shoulder.angle = 0
 elbow.angle = 0
 
 input("WAIT")
+shoulder.angle = 90
+elbow.angle = 0
 
+input("WAIT)")
 t1,t2 = getAngles(60,60)
 shoulder.angle = 90-(t1*2)
 time.sleep(.5)
