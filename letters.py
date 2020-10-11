@@ -649,7 +649,7 @@ shoulder.angle = 0
 elbow.angle = 0
 
 input("WAIT")
-shoulder.angle = 90 + 22
+shoulder.angle = 45 + 11
 elbow.angle = 0
 
 input("WAIT")
