@@ -650,6 +650,10 @@ shoulder.angle = t1*(-2/3) + 120
 elbow.angle = 0
 
 input("WAIT")
+
+shoulder.angle = .95
+
+input("WAIT")
 t1 = 90
 shoulder.angle = t1*(-2/3) + 120
 elbow.angle = 0
