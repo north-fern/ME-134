@@ -646,31 +646,31 @@ def execute_letters(letter, x, y):
 x1 = 0
 y1 = 0
 t1,t2 = getAngles(0,0)
-shoulder.angle = t1
+shoulder.angle = 90-t1
 time.sleep(.5)
 elbow.angle = t2
 time.sleep(.5)
 
 t1,t2 = getAngles(60,0)
-shoulder.angle = t1
+shoulder.angle = 90-t1
 time.sleep(.5)
 elbow.angle = t2
 time.sleep(.5)
 
 t1,t2 = getAngles(60,60)
-shoulder.angle = t1
+shoulder.angle = 90-t1
 time.sleep(.5)
 elbow.angle = t2
 time.sleep(.5)
 
 t1,t2 = getAngles(0,60)
-shoulder.angle = t1
+shoulder.angle = 90-t1
 time.sleep(.5)
 elbow.angle = t2
 time.sleep(.5)
 
 t1,t2 = getAngles(0,0)
-shoulder.angle = t1
+shoulder.angle = 90-t1
 time.sleep(.5)
 elbow.angle = t2
 time.sleep(.5)
