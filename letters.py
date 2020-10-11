@@ -53,8 +53,8 @@ def getAngles(x,y):
     else:
         h = y/(d*e)
     print("D and E are " + str(d) + " " + str(e))
-    theta1 = math.asin(h) * 100
-    theta2 = theta2 * 10
+    theta1 = math.asin(h) * 180/3.141592
+    theta2 = theta2 * 180/3.141592
     print(str(theta1) + "," + str(theta2))
     return theta1 , theta2
 
