@@ -11,23 +11,23 @@ pca = PCA9685(i2c_bus)
 pca.frequency = 50
 
 servo0 = servo.Servo(pca.channels[0])
-servo1 = servo.Servo(pca.channels[3])
+servo1 = servo.Servo(pca.channels[4])
 print("STARTING TEST")
 
 for i in range(180):
         servo0.angle = i
-        time.sleep(.1)
+        time.sleep(.5)
         servo1.angle = i
-        time.sleep(.1)
+        time.sleep(.5)
 stop = input("CONTINUE TEST? ")
 
 print("ENDING TEST")
 
 for i in range(180):
         servo0.angle = 180 - i
-        time.sleep(.1)
+        time.sleep(.5)
         servo1.angle = 180 - i
-        time.sleep(.1)
+        time.sleep(.5)
 
 print("TEST COMPLETE")
 pca.deinit()
