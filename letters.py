@@ -646,8 +646,8 @@ def execute_letters(letter, x, y):
 x1 = 0
 y1 = 0
 t1,t2 = getAngles(0,0)
-shoulder.angle() = t1
-elbow.angle() = t2
+shoulder.angle = t1
+elbow.angle = t2
 
 
 
