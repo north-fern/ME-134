@@ -651,5 +651,27 @@ time.sleep(.5)
 elbow.angle = t2
 time.sleep(.5)
 
+t1,t2 = getAngles(5,0)
+shoulder.angle = t1
+time.sleep(.5)
+elbow.angle = t2
+time.sleep(.5)
 
+t1,t2 = getAngles(5,5)
+shoulder.angle = t1
+time.sleep(.5)
+elbow.angle = t2
+time.sleep(.5)
+
+t1,t2 = getAngles(0,5)
+shoulder.angle = t1
+time.sleep(.5)
+elbow.angle = t2
+time.sleep(.5)
+
+t1,t2 = getAngles(0,0)
+shoulder.angle = t1
+time.sleep(.5)
+elbow.angle = t2
+time.sleep(.5)
 
