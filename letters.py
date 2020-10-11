@@ -20,6 +20,7 @@ pen = servo.Servo(pca.channels[6])
 #setting lengths for arms
 length1 = 10
 length2 = 10
+wait_time = .5
 
 #setting unit step of letters
 unitstep = 2
@@ -90,9 +91,9 @@ def up(x, y, WRITE_BOOL):
     else:
         pen_up()
     shoulder.angle = an1
-    time.sleep(.1)
+    time.sleep(wait_time)
     elbow.angle = an2
-    time.sleep(.1)
+    time.sleep(wait_time)
     print(str(nx) + "," + str(ny))
     return nx,ny
 
@@ -107,9 +108,9 @@ def down(x, y, WRITE_BOOL):
     else:
         pen_up()
     shoulder.angle = an1
-    time.sleep(.1)
+    time.sleep(wait_time)
     elbow.angle = an2
-    time.sleep(.1)
+    time.sleep(wait_time)
     print(str(nx) + "," + str(ny))
     return nx,ny
 
@@ -124,9 +125,9 @@ def left(x, y, WRITE_BOOL):
     else:
         pen_up()
     shoulder.angle = an1
-    time.sleep(.1)
+    time.sleep(wait_time)
     elbow.angle = an2
-    time.sleep(.1)
+    time.sleep(wait_time)
     print(str(nx) + "," + str(ny))
     return nx,ny
 
@@ -141,9 +142,9 @@ def right(x, y, WRITE_BOOL):
     else:
         pen_up()
     shoulder.angle = an1
-    time.sleep(.1)
+    time.sleep(wait_time)
     elbow.angle = an2
-    time.sleep(.1)
+    time.sleep(wait_time)
     print(str(nx) + "," + str(ny))
     return nx,ny
 
@@ -158,9 +159,9 @@ def down_diag_l2r(x, y, WRITE_BOOL):
     else:
         pen_up()
     shoulder.angle = an1
-    time.sleep(.1)
+    time.sleep(wait_time)
     elbow.angle = an2
-    time.sleep(.1)
+    time.sleep(wait_time)
     print(str(nx) + "," + str(ny))
     return nx,ny
 
@@ -175,9 +176,9 @@ def down_diag_r2l(x, y, WRITE_BOOL):
     else:
         pen_up()
     shoulder.angle = an1
-    time.sleep(.1)
+    time.sleep(wait_time)
     elbow.angle = an2
-    time.sleep(.1)
+    time.sleep(wait_time)
     print(str(nx) + "," + str(ny))
     return nx,ny
 
@@ -192,9 +193,9 @@ def up_diag_l2r(x, y, WRITE_BOOL):
     else:
         pen_up()
     shoulder.angle = an1
-    time.sleep(.1)
+    time.sleep(wait_time)
     elbow.angle = an2
-    time.sleep(.1)
+    time.sleep(wait_time)
     print(str(nx) + "," + str(ny))
     return nx,ny
 
@@ -209,9 +210,9 @@ def up_diag_r2l(x, y, WRITE_BOOL):
     else:
         pen_up()
     shoulder.angle = an1
-    time.sleep(.1)
+    time.sleep(wait_time)
     elbow.angle = an2
-    time.sleep(.1)
+    time.sleep(wait_time)
     print(str(nx) + "," + str(ny))
     return nx,ny
 
