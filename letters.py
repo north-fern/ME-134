@@ -20,7 +20,7 @@ elbow= servo.Servo(pca.channels[3])
 #setting lengths for arms
 length1 = 15
 length2 = 15
-wait_time = .5
+wait_time = .2
 
 #setting unit step of letters
 unitstep = 6
