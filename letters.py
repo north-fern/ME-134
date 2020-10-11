@@ -22,7 +22,7 @@ length1 = 5
 length2 = 5
 
 #setting unit step of letters
-unitstep = 1
+unitstep = 3
 
 #setting up button
 #https://raspberrypihq.com/use-a-push-button-with-raspberry-pi-gpio/
