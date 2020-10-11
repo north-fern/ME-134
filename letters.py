@@ -36,16 +36,16 @@ GPIO.setup(10, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 #######################
 def getAngles(x,y):
     a = (x^2) + (y^2) - (length1^2) - (length2^2)
-    print(a)
+    #print(a)
     b = (2*length2*length1)
-    print(b)
+    #print(b)
     c = a/b
-    print(c)
+    #print(c)
     theta2 = math.acos(c)
     d = length1 + length2*math.cos(theta2)
-    print(d)
+    #print(d)
     e = length2*math.sin(theta2)*((x + length2*math.sin(theta2))/(length1 + length2*math.cos(theta2)))
-    print(e)
+    #print(e)
     theta1 = math.asin(y/(d*e))
     return theta1, theta2
 
@@ -72,7 +72,6 @@ def pen_down():
 ## MOTION FUNCTIONS ##
 ######################
 def up(x, y, WRITE_BOOL):
-    
     nx = x
     ny = y + unitstep
     an1, an2 = getAngles(nx,ny)
@@ -82,7 +81,10 @@ def up(x, y, WRITE_BOOL):
     else:
         pen_up()
     shoulder.angle = an1
+    time.sleep(.1)
     elbow.angle = an2
+    time.sleep(.1)
+    print(str(nx) + "," + str(ny))
     return nx,ny
 
 def down(x, y, WRITE_BOOL):
@@ -96,7 +98,10 @@ def down(x, y, WRITE_BOOL):
     else:
         pen_up()
     shoulder.angle = an1
+    time.sleep(.1)
     elbow.angle = an2
+    time.sleep(.1)
+    print(str(nx) + "," + str(ny))
     return nx,ny
 
 def left(x, y, WRITE_BOOL):
@@ -110,7 +115,10 @@ def left(x, y, WRITE_BOOL):
     else:
         pen_up()
     shoulder.angle = an1
+    time.sleep(.1)
     elbow.angle = an2
+    time.sleep(.1)
+    print(str(nx) + "," + str(ny))
     return nx,ny
 
 def right(x, y, WRITE_BOOL):
@@ -124,7 +132,10 @@ def right(x, y, WRITE_BOOL):
     else:
         pen_up()
     shoulder.angle = an1
+    time.sleep(.1)
     elbow.angle = an2
+    time.sleep(.1)
+    print(str(nx) + "," + str(ny))
     return nx,ny
 
 def down_diag_l2r(x, y, WRITE_BOOL):
@@ -138,7 +149,10 @@ def down_diag_l2r(x, y, WRITE_BOOL):
     else:
         pen_up()
     shoulder.angle = an1
+    time.sleep(.1)
     elbow.angle = an2
+    time.sleep(.1)
+    print(str(nx) + "," + str(ny))
     return nx,ny
 
 def down_diag_r2l(x, y, WRITE_BOOL):
@@ -152,7 +166,10 @@ def down_diag_r2l(x, y, WRITE_BOOL):
     else:
         pen_up()
     shoulder.angle = an1
+    time.sleep(.1)
     elbow.angle = an2
+    time.sleep(.1)
+    print(str(nx) + "," + str(ny))
     return nx,ny
 
 def up_diag_l2r(x, y, WRITE_BOOL):
@@ -166,7 +183,10 @@ def up_diag_l2r(x, y, WRITE_BOOL):
     else:
         pen_up()
     shoulder.angle = an1
+    time.sleep(.1)
     elbow.angle = an2
+    time.sleep(.1)
+    print(str(nx) + "," + str(ny))
     return nx,ny
 
 def up_diag_r2l(x, y, WRITE_BOOL):
@@ -180,13 +200,17 @@ def up_diag_r2l(x, y, WRITE_BOOL):
     else:
         pen_up()
     shoulder.angle = an1
+    time.sleep(.1)
     elbow.angle = an2
+    time.sleep(.1)
+    print(str(nx) + "," + str(ny))
     return nx,ny
 
 #######################
 ## LETTER DEFINITONS ##
 #######################
 def A(x, y):
+    '''
     x1,y1 = up(x,y,T)
     x2,y2 = up(x1,y1,T)
     x3,y3 = right(x2,y2,T)
@@ -199,6 +223,8 @@ def A(x, y):
     x10,y10 = down_diag_l2r(x9,y9,F)
     x11,y11 = right(x10,y10,F)
     ex,ey = right(x11,y11,F)
+    '''
+    ex,ey = up(0,0,T)
     return ex,ey
 
 def B(x, y):
