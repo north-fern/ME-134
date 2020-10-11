@@ -633,10 +633,10 @@ def execute_letters(letter, x, y):
 ####################
 ## MAIN FUNCTIONS ##
 ####################
-
-while True:
     x = 0
     y = 0
+while True:
+
     letters = input("WHAT LETTERS DO YOU WANT (all caps please)?  ")
     for i in letters:
         nx, ny = execute_letters(i, x, y)
