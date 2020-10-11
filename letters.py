@@ -15,7 +15,7 @@ pca.frequency = 50
 # declaring servos
 shoulder = servo.Servo(pca.channels[0])
 elbow= servo.Servo(pca.channels[3])
-pen = servo.Servo(pca.channels[6])
+#pen = servo.Servo(pca.channels[6])
  
 #setting lengths for arms
 length1 = 10
@@ -23,13 +23,13 @@ length2 = 10
 wait_time = .5
 
 #setting unit step of letters
-unitstep = 2
+unitstep = 3
 
 #setting up button
 #https://raspberrypihq.com/use-a-push-button-with-raspberry-pi-gpio/
-GPIO.setwarnings(False)
+#GPIO.setwarnings(False)
 #GPIO.setmode(GPIO.BOARD)
-GPIO.setup(10, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
+#GPIO.setup(10, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 #set to pin 10 - connect from pin 10 to 3.3 power w/ resistor
 
 #######################
