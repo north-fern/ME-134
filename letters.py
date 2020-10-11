@@ -653,31 +653,31 @@ shoulder.angle = 45 + 11
 elbow.angle = 0
 
 input("WAIT")
-t1,t2 = getAngles(60,60)
+t1,t2 = getAngles(5,5)
 shoulder.angle = t1 + (t1/180)*44
 time.sleep(.5)
 elbow.angle = t2
 time.sleep(.5)
 
-t1,t2 = getAngles(120,60)
+t1,t2 = getAngles(5,6)
 shoulder.angle = t1 + (t1/180)*44
 time.sleep(.5)
 elbow.angle = t2
 time.sleep(.5)
 
-t1,t2 = getAngles(120,120)
+t1,t2 = getAngles(6,6)
 shoulder.angle = t1 + (t1/180)*44
 time.sleep(.5)
 elbow.angle = t2
 time.sleep(.5)
 
-t1,t2 = getAngles(60,120)
+t1,t2 = getAngles(6,5)
 shoulder.angle = t1 + (t1/180)*44
 time.sleep(.5)
 elbow.angle = t2
 time.sleep(.5)
 
-t1,t2 = getAngles(60,60)
+t1,t2 = getAngles(5,5)
 shoulder.angle =t1 + (t1/180)*44
 time.sleep(.5)
 elbow.angle = t2
