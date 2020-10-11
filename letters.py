@@ -645,10 +645,4 @@ def execute_letters(letter, x, y):
 ####################
 x1 = 0
 y1 = 0
-while True:
-
-    letters = input("WHAT LETTERS DO YOU WANT (all caps please)?  ")
-    for i in letters:
-        nx, ny = execute_letters(i, x1, y1)
-        x1 = nx
-        y1 = ny
+getAngles(0,0)
