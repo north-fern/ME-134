@@ -651,7 +651,7 @@ elbow.angle = 0
 
 input("WAIT")
 
-shoulder.angle = .95
+shoulder.angle = 1
 
 input("WAIT")
 t1 = 90
