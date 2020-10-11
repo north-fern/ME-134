@@ -35,10 +35,18 @@ GPIO.setup(10, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 ## FIND MOTOR ANGLES ##
 #######################
 def getAngles(x,y):
-    theta2 = math.acos(((x^2) + (y^2) - (length1^2) - (length2^2)/(2*length2*length1)))
-    a = length1 + length2*cos(theta2)
-    b = length2*sin(theta1)*((x + length2*sin(theta2))/(length1 + length2*cos(theat2)))
-    theta1 = math.asin(y/(a*b))
+    a = (x^2) + (y^2) - (length1^2) - (length2^2)
+    print(a)
+    b = (2*length2*length1)
+    print(b)
+    c = a/b
+    print(c)
+    theta2 = math.acos(c)
+    d = length1 + length2*cos(theta2)
+    print(d)
+    e = length2*sin(theta1)*((x + length2*sin(theta2))/(length1 + length2*cos(theat2)))
+    print(e)
+    theta1 = math.asin(y/(d*e))
     return theta1, theta2
 
 #####################
