@@ -34,7 +34,7 @@ GPIO.setup(10, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 #######################
 ## FIND MOTOR ANGLES ##
 #######################
-def theta1, theta2 = getAngles(x,y):
+def getAngles(x,y):
     theta2 = math.acos(((x^2) + (y^2) - (length1^2) - (length2^2)/(2*length2*length1)))
     a = length1 + length2*cos(theta2)
     b = length2*sin(theta1)*((x + length2*sin(theta2))/(length1 + length2*cos(theat2)))
@@ -63,7 +63,7 @@ def pen_down():
 ######################
 ## MOTION FUNCTIONS ##
 ######################
-def nx,ny = up(x, y, WRITE_BOOL):
+def up(x, y, WRITE_BOOL):
     
     nx = x
     ny = y + unitstep
@@ -77,7 +77,7 @@ def nx,ny = up(x, y, WRITE_BOOL):
     elbow.angle = an2
     return nx,ny
 
-def nx,ny = down(x, y, WRITE_BOOL):
+def down(x, y, WRITE_BOOL):
      
     nx = x
     ny = y - unitstep
@@ -91,7 +91,7 @@ def nx,ny = down(x, y, WRITE_BOOL):
     elbow.angle = an2
     return nx,ny
 
-def nx,ny = left(x, y, WRITE_BOOL):
+def left(x, y, WRITE_BOOL):
     
     nx = x - unitstep
     ny = y 
@@ -105,7 +105,7 @@ def nx,ny = left(x, y, WRITE_BOOL):
     elbow.angle = an2
     return nx,ny
 
-def nx,ny = right(x, y, WRITE_BOOL):
+def right(x, y, WRITE_BOOL):
     
     nx = x + unitstep
     ny = y 
@@ -119,7 +119,7 @@ def nx,ny = right(x, y, WRITE_BOOL):
     elbow.angle = an2
     return nx,ny
 
-def nx,ny = down_diag_l2r(x, y, WRITE_BOOL):
+def down_diag_l2r(x, y, WRITE_BOOL):
     
     nx = x + unitstep
     ny = y - unitstep
@@ -133,7 +133,7 @@ def nx,ny = down_diag_l2r(x, y, WRITE_BOOL):
     elbow.angle = an2
     return nx,ny
 
-def nx,ny = down_diag_r2l(x, y, WRITE_BOOL):
+def down_diag_r2l(x, y, WRITE_BOOL):
     
     nx = x - unitstep
     ny = y - unitstep
@@ -147,7 +147,7 @@ def nx,ny = down_diag_r2l(x, y, WRITE_BOOL):
     elbow.angle = an2
     return nx,ny
 
-def nx,ny = up_diag_l2r(x, y, WRITE_BOOL):
+def up_diag_l2r(x, y, WRITE_BOOL):
     
     nx = x + unitstep
     ny = y + unitstep
@@ -161,7 +161,7 @@ def nx,ny = up_diag_l2r(x, y, WRITE_BOOL):
     elbow.angle = an2
     return nx,ny
 
-def nx,ny = up_diag_r2l(x, y, WRITE_BOOL):
+def up_diag_r2l(x, y, WRITE_BOOL):
     
     nx = x - unitstep
     ny = y + unitstep
@@ -178,7 +178,7 @@ def nx,ny = up_diag_r2l(x, y, WRITE_BOOL):
 #######################
 ## LETTER DEFINITONS ##
 #######################
-def ex,ey = A(x, y):
+def A(x, y):
     x1,y1 = up(x,y,T)
     x2,y2 = up(x1,y1,T)
     x3,y3 = right(x2,y2,T)
@@ -193,7 +193,7 @@ def ex,ey = A(x, y):
     ex,ey = right(x11,y11,F)
     return ex,ey
 
-def ex,ey = B(x, y):
+def B(x, y):
     x1,y1 = up(x,y,T)
     x2,y2 = up(x1,y1,T)
     x3,y3 = right(x2,y2,T)
@@ -209,7 +209,7 @@ def ex,ey = B(x, y):
     ex,ey = right(x12,y12,F)
     return ex,ey
 
-def ex,ey = C(x, y):
+def C(x, y):
     x1,y1 = up(x,y,T)
     x2,y2 = up(x1,y1,T)
     x3,y3 = right(x2,y2,T)
@@ -223,7 +223,7 @@ def ex,ey = C(x, y):
     ex,ey = right(x10,y10,F)
     return ex,ey
 
-def ex,ey = E(x, y):
+def E(x, y):
     x1,y1 = up(x,y,T)
     x2,y2 = up(x1,y1,T)
     x3,y3 = right(x2,y2,T)
@@ -237,7 +237,7 @@ def ex,ey = E(x, y):
     ex,ey = right(x10,y10,F)
     return ex,ey
 
-def ex,ey = F(x, y):
+def F(x, y):
     x1,y1 = up(x,y,T)
     x2,y2 = up(x1,y1,T)
     x3,y3 = right(x2,y2,T)
@@ -251,7 +251,7 @@ def ex,ey = F(x, y):
     ex,ey = right(x10,y10,F)
     return ex,ey
 
-def ex,ey = G(x, y):
+def G(x, y):
     x1,y1 = up(x,y,T)
     x2,y2 = up(x1,y1,T)
     x3,y3 = right(x2,y2,T)
@@ -266,7 +266,7 @@ def ex,ey = G(x, y):
     ex,ey = right(x11,y11,F)
     return ex,ey
 
-def ex,ey = H(x, y):
+def H(x, y):
     x1,y1 = up(x,y,T)
     x2,y2 = up(x1,y1,T)
     x3,y3 = right(x2,y2,F)
@@ -282,7 +282,7 @@ def ex,ey = H(x, y):
     ex,ey = right(x12,y12,F)
     return ex,ey
 
-def ex,ey = I(x, y):
+def I(x, y):
     x1,y1 = right(x,y,T)
     x2,y2 = up(x1,y1,T)
     x3,y3 = right(x2,y2,T)
@@ -298,7 +298,7 @@ def ex,ey = I(x, y):
     ex,ey = right(x12,y12,F)
     return ex,ey
 
-def ex,ey = J(x, y):
+def J(x, y):
     x1,y1 = up(x,y,T)
     x2,y2 = up(x1,y1,F)
     x3,y3 = right(x2,y2,T)
@@ -312,7 +312,7 @@ def ex,ey = J(x, y):
     ex,ey = right(x10,y10,F)
     return ex,ey
 
-def ex,ey = K(x, y):
+def K(x, y):
     x1,y1 = up(x,y,T)
     x2,y2 = up(x1,y1,T)
     x3,y3 = down(x2,y2,F)
@@ -326,7 +326,7 @@ def ex,ey = K(x, y):
     ex,ey = down(x10,y10,F)
     return ex,ey
 
-def ex,ey = L(x, y):
+def L(x, y):
     x1,y1 = up(x,y,T)
     x2,y2 = up(x1,y1,T)
     x3,y3 = right(x2,y2,F)
@@ -340,7 +340,7 @@ def ex,ey = L(x, y):
     ex,ey = right(x10,y10,F)
     return ex,ey
 
-def ex,ey = M(x, y):
+def M(x, y):
     x1,y1 = up(x,y,T)
     x2,y2 = up(x1,y1,T)
     x3,y3 = down_diag_l2r(x2,y2,T)
@@ -350,7 +350,7 @@ def ex,ey = M(x, y):
     ex,ey = right(x6,y6,F)
     return ex,ey
 
-def ex,ey = N(x, y):
+def N(x, y):
     x1,y1 = up(x,y,T)
     x2,y2 = up(x1,y1,T)
     x3,y3 = down_diag_l2r(x2,y2,T)
@@ -362,7 +362,7 @@ def ex,ey = N(x, y):
     ex,ey = right(x8,y8,F)
     return ex,ey
 
-def ex,ey = O(x, y):
+def O(x, y):
     x1,y1 = up(x,y,F)
     x2,y2 = up_diag_l2r(x1,y1,T)
     x3,y3 = down_diag_l2r(x2,y2,T)
@@ -374,7 +374,7 @@ def ex,ey = O(x, y):
     ex,ey = right(x8,y8,F)
     return ex,ey
 
-def ex,ey = P(x, y):
+def P(x, y):
     x1,y1 = up(x,y,T)
     x2,y2 = up(x1,y1,T)
     x3,y3 = right(x2,y2,T)
@@ -388,7 +388,7 @@ def ex,ey = P(x, y):
     ex,ey = right(x10,y10,F)
     return ex,ey
 
-def ex,ey = Q(x, y):
+def Q(x, y):
     x1,y1 = up(x,y,F)
     x2,y2 = up_diag_l2r(x1,y1,T)
     x3,y3 = down_diag_l2r(x2,y2,T)
@@ -399,7 +399,7 @@ def ex,ey = Q(x, y):
     ex,ey = right(x7,y7,F)  
     return ex,ey
 
-def ex,ey = R(x, y):
+def R(x, y):
     x1,y1 = up(x,y,T)
     x2,y2 = up(x1,y1,T)
     x3,y3 = right(x2,y2,T)
@@ -412,7 +412,7 @@ def ex,ey = R(x, y):
     ex,ey = right(x9,y9,F)
     return ex,ey
 
-def ex,ey = S(x, y):
+def S(x, y):
     x1,y1 = up(x,y,F)
     x2,y2 = up(x1,y1,T)
     x3,y3 = right(x2,y2,T)
@@ -428,7 +428,7 @@ def ex,ey = S(x, y):
     ex,ey = right(x12,y12,F)
     return ex,ey
 
-def ex,ey = T(x, y):
+def T(x, y):
     x1,y1 = right(x,y,F)
     x2,y2 = up(x1,y1,T)
     x3,y3 = up(x2,y2,T)
@@ -442,7 +442,7 @@ def ex,ey = T(x, y):
     ex,ey = right(x10,y10,F)
     return ex,ey
 
-def ex,ey = U(x, y):
+def U(x, y):
     x1,y1 = up(x,y,T)
     x2,y2 = up(x1,y1,T)
     x3,y3 = down(x2,y2,F)
@@ -456,7 +456,7 @@ def ex,ey = U(x, y):
     ex,ey = right(x10,y10,F)
     return ex,ey
 
-def ex,ey = V(x, y):
+def V(x, y):
     x1,y1 = up(x,y,F)
     x2,y2 = up(x1,y1,T)
     x3,y3 = down(x2,y2,F)
@@ -468,7 +468,7 @@ def ex,ey = V(x, y):
     ex,ey = right(x8,y8,F)
     return ex,ey 
 
-def ex,ey = W(x, y):
+def W(x, y):
     x1,y1 = up(x,y,T)
     x2,y2 = up(x1,y1,T)
     x3,y3 = down(x2,y2,F)
@@ -482,7 +482,7 @@ def ex,ey = W(x, y):
     ex,ey = right(x10,y10,F)
     return ex,ey
 
-def ex,ey = X(x, y):
+def X(x, y):
     x1,y1 = up_diag_l2r(x,y,T)
     x2,y2 = up_diag_l2r(x1,y1,T)
     x3,y3 = left(x2,y2,F)
@@ -492,7 +492,7 @@ def ex,ey = X(x, y):
     ex,ey = right(x6,y6,F)
     return ex,ey
 
-def ex,ey = Y(x, y):
+def Y(x, y):
     x1,y1 = up(x,y,F)
     x2,y2 = up(x1,y1,T)
     x3,y3 = down(x2,y2,F)
@@ -504,7 +504,7 @@ def ex,ey = Y(x, y):
     ex,ey = right(x8,y8,F)
     return ex,ey
 
-def ex,ey = Z(x, y):
+def Z(x, y):
     x1,y1 = up(x,y,F)
     x2,y2 = up(x1,y1,F)
     x3,y3 = right(x2,y2,T)
@@ -516,7 +516,7 @@ def ex,ey = Z(x, y):
     ex,ey = right(x8,y8,F)
     return ex,ey
 
-def nx, ny = execute_letters(letter, x, y):
+def execute_letters(letter, x, y):
     if letter == 'A':
         nx, ny = A(x,y)
         return nx, ny
