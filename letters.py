@@ -18,8 +18,8 @@ elbow= servo.Servo(pca.channels[3])
 pen = servo.Servo(pca.channels[6])
  
 #setting lengths for arms
-length1 = 25
-length2 = 25
+length1 = 10
+length2 = 10
 
 #setting unit step of letters
 unitstep = 3
@@ -42,7 +42,7 @@ def getAngles(x,y):
     c = a/b
     #print(c)
     print("A B C are " + str(a) + " "+ str(b) + " " + str(c))
-    theta2 = math.acos(c) * 10
+    theta2 = math.acos(c) * 5
     print("THETA 2 is " + str(theta2))
     d = length1 + length2*math.cos(theta2)
     #print(d)
@@ -53,7 +53,7 @@ def getAngles(x,y):
     else:
         h = y/(d*e)
     print("D and E are " + str(d) + " " + str(e))
-    theta1 = math.asin(h) * 10
+    theta1 = math.asin(h) * 5
     print(str(theta1) + "," + str(theta2))
     return theta1, theta2
 
