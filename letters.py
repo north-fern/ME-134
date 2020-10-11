@@ -651,19 +651,19 @@ time.sleep(.5)
 elbow.angle = t2
 time.sleep(.5)
 
-t1,t2 = getAngles(240,60)
+t1,t2 = getAngles(120,60)
 shoulder.angle = 90-t1
 time.sleep(.5)
 elbow.angle = t2
 time.sleep(.5)
 
-t1,t2 = getAngles(240,240)
+t1,t2 = getAngles(120,120)
 shoulder.angle = 90-t1
 time.sleep(.5)
 elbow.angle = t2
 time.sleep(.5)
 
-t1,t2 = getAngles(60,240)
+t1,t2 = getAngles(60,120)
 shoulder.angle = 90-t1
 time.sleep(.5)
 elbow.angle = t2
