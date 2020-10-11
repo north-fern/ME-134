@@ -27,7 +27,7 @@ unitstep = 1
 #setting up button
 #https://raspberrypihq.com/use-a-push-button-with-raspberry-pi-gpio/
 GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BOARD)
+#GPIO.setmode(GPIO.BOARD)
 GPIO.setup(10, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 #set to pin 10 - connect from pin 10 to 3.3 power w/ resistor
 
