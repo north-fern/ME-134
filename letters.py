@@ -590,17 +590,25 @@ time.sleep(.5)
 elbow.angle = t2
 time.sleep(.5)
 '''
-a = 15
-b = 120
+a = 120
+b = 15
 x = 0
 y = 0
 
+shoulder.angle = a
+elbow.angle = b
+input("READY?")
+
 x, y, a, b = execute_letters('O', x, y, a, b)
 time.sleep(.25)
+input("WAIT")
 x, y, a, b = execute_letters('K', x, y, a, b)
 time.sleep(.25)
+input("WAIT")
 x, y, a, b = execute_letters('M', x, y, a, b)
 time.sleep(.25)
+input("WAIT")
 x, y, a, b = execute_letters('S', x, y, a, b)
 time.sleep(.25)
+input("DONE")
 
