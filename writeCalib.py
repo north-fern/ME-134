@@ -18,8 +18,8 @@ elbow= servo.Servo(pca.channels[4])
 #pen = servo.Servo(pca.channels[6])
  
 #setting lengths for arms
-length1 = 5.07
-length2 = 3.81
+a1 = 5.07
+a2= 3.81
 wait_time = .2
 
 #setting unit step of letters
