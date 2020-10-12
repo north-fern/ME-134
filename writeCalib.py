@@ -54,7 +54,7 @@ def getAngles(x,y):
     j = h - length2*math.sin(theta2)
     if x < 0:
         theta1 = 180 - (math.asin(xnew / j) * 180/3.141592)
-    else
+    else:
         theta1 = math.asin(xnew / j) * 180/3.141592
 
     theta2 = theta2 * 180/3.141592
