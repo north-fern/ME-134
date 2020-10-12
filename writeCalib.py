@@ -53,9 +53,9 @@ def getAngles(x,y):
     j = a/((a1**2)*a2*y)
 
     theta2 = math.atan2(h,j) * 180/3.141592
-'''
+    '''
 
-   # print(theta1, theta2)
+    #print(theta1, theta2)
 
     t11 = t1 * 180/3.141592
     t22 = t2 * 180/3.141592
