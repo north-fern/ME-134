@@ -118,7 +118,7 @@ elbow.angle = (18/13)*90
 
 input("90")
 
-elbow.angle = (18/13)*180 
+elbow.angle = (18/13)*130 
 
 input("180")
 
