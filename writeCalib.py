@@ -187,8 +187,8 @@ elbow.angle = (18/13)*t2
 
 
 while True:
-   x = input("X Coord? ")
-   y = input("Y Coord? ")
+   x = float(input("X Coord? "))
+   y = float((input("Y Coord? "))
    theta1, theta2 = getAngles(x,y)
    shoulder.angle = theta1
    elbow.angle = theta2
