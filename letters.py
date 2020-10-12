@@ -23,7 +23,7 @@ a2 = 6
 wait_time = .2
 
 #setting unit step of letters
-unitstep = 1
+unitstep = .25
 
 #setting up button
 #https://raspberrypihq.com/use-a-push-button-with-raspberry-pi-gpio/
@@ -371,12 +371,33 @@ def N(x, y):
 '''
 def O(x, y, a, b):
     x1,y1 , a1, b1 = up(x,y,a, b)
+    x1,y1 , a1, b1 = up(x1,y1,a1, b1)
+    x1,y1 , a1, b1 = up(x1,y1,a1, b1)
+    x1,y1 , a1, b1 = up(x1,y1,a1, b1)
     x2,y2, a1, b1 = up_diag_l2r(x1,y1,a1, b1)
+    x2,y2, a1, b1 = up_diag_l2r(x1,y1,a1, b1)
+    x2,y2, a1, b1 = up_diag_l2r(x1,y1,a1, b1)
+    x2,y2, a1, b1 = up_diag_l2r(x1,y1,a1, b1)
+    x3,y3, a1, b1 = down_diag_l2r(x2,y2,a1, b1)
+    x3,y3, a1, b1 = down_diag_l2r(x2,y2,a1, b1)
+    x3,y3, a1, b1 = down_diag_l2r(x2,y2,a1, b1)
     x3,y3, a1, b1 = down_diag_l2r(x2,y2,a1, b1)
     x4,y4, a1, b1 = down_diag_r2l(x3,y3,a1, b1)
     x5,y5, a1, b1 = up_diag_r2l(x4,y4,a1, b1)
+    x5,y5, a1, b1 = up_diag_r2l(x4,y4,a1, b1)
+    x5,y5, a1, b1 = up_diag_r2l(x4,y4,a1, b1)
+    x5,y5, a1, b1 = up_diag_r2l(x4,y4,a1, b1)
+    x6,y6, a1, b1 = down(x5,y5,a1, b1)
+    x6,y6, a1, b1 = down(x5,y5,a1, b1)
+    x6,y6, a1, b1 = down(x5,y5,a1, b1)
     x6,y6, a1, b1 = down(x5,y5,a1, b1)
     x7,y7, a1, b1 = right(x6,y6,a1, b1)
+    x7,y7, a1, b1 = right(x6,y6,a1, b1)
+    x7,y7, a1, b1 = right(x6,y6,a1, b1)
+    x7,y7, a1, b1 = right(x6,y6,a1, b1)
+    x8,y8, a1, b1 = right(x7,y7,a1, b1)
+    x8,y8, a1, b1 = right(x7,y7,a1, b1)
+    x8,y8, a1, b1 = right(x7,y7,a1, b1)
     x8,y8, a1, b1 = right(x7,y7,a1, b1)
     ex,ey, a, b = right(x8,y8,a1, b1)
     return ex,ey, a, b
