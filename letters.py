@@ -372,9 +372,9 @@ def M(x, y, a, b):
     x22,y22,a22, b22 = down(x21,y21,a21, b21)
     x23,y23,a23, b23 = down(x22,y22,a22, b22)
     x24,y24,a24, b24 = down(x23,y23,a23, b23)
-    e25,e25,a25, b25 = right(x24,y24,a24, b24)
-    e26,e26,a26, b26 = right(e25,e25,a25, b25)
-    e27,e27,a27, b27 = right(e26,e26,a26, b26)
+    x25,y25,a25, b25 = right(x24,y24,a24, b24)
+    x26,y26,a26, b26 = right(x25,y25,a25, b25)
+    x27,y27,a27, b27 = right(x26,y26,a26, b26)
     ex,ey,a, b = right(e27,e27,a27, b27)
     return ex,ey, a, b
 '''
