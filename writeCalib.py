@@ -50,6 +50,7 @@ def getAngles(x,y):
     j = a/((a1**2)*a2*y)
 
     theta2 = math.atan2(h,j) * 180/3.141592
+    if theta2 < 
 
    # print(theta1, theta2)
     return theta1, theta2
@@ -188,19 +189,19 @@ elbow.angle = (18/13)*t2
 the1, the2 = getAngles(7,2)
 print(str(the1) + " , " + str(the2))
 
-the1, the2 = getAngles(2,2)
+the1, the2 = getAngles(4,4)
 print(str(the1) + " , " + str(the2))
 
-the1, the2 = getAngles(2,3)
+the1, the2 = getAngles(4,5)
 print(str(the1) + " , " + str(the2))
 
-the1, the2 = getAngles(3,3)
+the1, the2 = getAngles(5,5)
 print(str(the1) + " , " + str(the2))
 
-the1, the2 = getAngles(3,2)
+the1, the2 = getAngles(5,4)
 print(str(the1) + " , " + str(the2))
 
-the1, the2 = getAngles(2,2)
+the1, the2 = getAngles(4,4)
 print(str(the1) + " , " + str(the2))
 
 
