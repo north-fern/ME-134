@@ -593,7 +593,7 @@ time.sleep(.5)
 a = 120
 b = 90
 x = 0
-y = 4
+y = 8
 
 shoulder.angle = a
 elbow.angle = b
