@@ -36,168 +36,135 @@ unitstep = 6
 ## FIND MOTOR ANGLES ##
 #######################
 def getAngles(x,y):
-    a = (x^2) + (y^2) - (length1^2) - (length2^2)
-    #print(a)
-    b = (2*length2*length1)
-    #print(b)
-    c = a/b
-    #print(c)
-    print("A B C are " + str(a) + " "+ str(b) + " " + str(c))
-    theta2 = math.acos(c)
-    print("THETA 2 is " + str(theta2))
-    d = length1 + length2*math.cos(theta2)
-    #print(d)
-    e = length2*math.sin(theta2)*((x + length2*math.sin(theta2))/(length1 + length2*math.cos(theta2)))
-    #print(e)
-    if e == 0:
-        h = 0
-    else:
-        h = y/(d*e)
-    print("D and E are " + str(d) + " " + str(e))
-    theta1 = math.asin(h) * 180/3.141592
-    theta2 = theta2 * 180/3.141592
-    print(str(theta1) + "," + str(theta2))
-    return theta1 , theta2
+    t1 = math.pi/2 - math.atan2( (a1**3*x + a1*x*(-a2**2 + x**2 + y**2) + \
+     math.sqrt(-(a1**2*y**2*(a1**4 + (-a2**2 + x**2 + y**2)**2 - \
+     2*a1**2*(a2**2 + x**2 + y**2)))))/(a1**2*(x**2 + y**2)),\
+     (a1**3*y**2 + a1*y**2*(-a2**2 + x**2 + y**2) - \
+     x*math.sqrt(-(a1**2*y**2*(a1**4 + (-a2**2 + x**2 + y**2)**2 -\
+     2*a1**2*(a2**2 + x**2 + y**2)))))/(a1**2*y*(x**2 + y**2)))
 
-#####################
-## PEN DEFINITIONS ##
-#####################
-def pen_up():
-    '''
-    i = 0
-    while GPIO.input(10) != GPIO.HIGH:
-        pen.angle() = i+1
-        i = i + 1
-        '''
-    
-def pen_down():
-    '''
-        i = 50
-    while GPIO.input(10) != GPIO.HIGH:
-        pen.angle() = i-1
-        i = i - 1
-        '''
+    t2 = math.acos((x**2 + y**2 - a1**2 - a2**2)/(2 * a1 * a2))
+
+    t11 = t1 * 180/3.141592
+    t1 = t11*(-2/3) + 120
+    t22 = t2 * 180/3.141592
+    t2 = t22*(18/13)
+    return t1, t2
+
+
+def move_slow_S(pastAng, curr_ang):
+    ang = pastAng
+    if pastAng < curr_ang:
+        while ang < curr_ang:
+            ang = ang + 2
+            shoulder.angle = ang
+            time.sleep(.1)
+    else:
+        while ang > curr_ang:
+            ang = ang - 2
+            shoulder.angle = ang
+            time.sleep(.1)
+
+def move_slow_E(pastAng, curr_ang):
+    ang = pastAng
+    if pastAng < curr_ang:
+        while ang < curr_ang:
+            ang = ang + 2
+            elbow.angle = ang
+            time.sleep(.1)
+    else:
+        while ang > curr_ang:
+            ang = ang - 2
+            elbow.angle = ang
+            time.sleep(.1)
+
+
 
 ######################
 ## MOTION FUNCTIONS ##
 ######################
-def up(x, y, WRITE_BOOL):
+def up(x, y, olda, oldb):
     nx = x
     ny = y + unitstep
     an1, an2 = getAngles(nx,ny)
     
-    if WRITE_BOOL == 'T':
-        pen_down()
-    else:
-        pen_up()
-    shoulder.angle = an1
-    time.sleep(wait_time)
-    elbow.angle = an2
-    time.sleep(wait_time)
+    move_slow_E(oldb, an2)
+    move_slow_S(olda, an1)
     print(str(nx) + "," + str(ny))
-    return nx,ny
+    return nx,ny, an1, an2
 
-def down(x, y, WRITE_BOOL):
+def down(x, y, olda, oldb):
      
     nx = x
     ny = y - unitstep
     an1, an2 = getAngles(nx,ny)
     
-    if WRITE_BOOL == 'T':
-        pen_down()
-    else:
-        pen_up()
-    shoulder.angle = an1
-    time.sleep(wait_time)
-    elbow.angle = an2
-    time.sleep(wait_time)
+    
+    move_slow_E(oldb, an2)
+    move_slow_S(olda, an1)
     print(str(nx) + "," + str(ny))
-    return nx,ny
+    return nx,ny, an1, an2
 
-def left(x, y, WRITE_BOOL):
+
+def left(x, y, olda, oldb):
     
     nx = x - unitstep
     ny = y 
     an1, an2 = getAngles(nx,ny)
     
-    if WRITE_BOOL == 'T':
-        pen_down()
-    else:
-        pen_up()
-    shoulder.angle = an1
-    time.sleep(wait_time)
-    elbow.angle = an2
-    time.sleep(wait_time)
+    move_slow_E(oldb, an2)
+    move_slow_S(olda, an1)
     print(str(nx) + "," + str(ny))
-    return nx,ny
+    return nx,ny, an1, an2
 
-def right(x, y, WRITE_BOOL):
+
+def right(x, y, olda, oldb):
     
     nx = x + unitstep
     ny = y 
     an1, an2 = getAngles(nx,ny)
     
-    if WRITE_BOOL == 'T':
-        pen_down()
-    else:
-        pen_up()
-    shoulder.angle = an1
-    time.sleep(wait_time)
-    elbow.angle = an2
-    time.sleep(wait_time)
+    
+    move_slow_E(oldb, an2)
+    move_slow_S(olda, an1)
     print(str(nx) + "," + str(ny))
-    return nx,ny
+    return nx,ny, an1, an2
 
-def down_diag_l2r(x, y, WRITE_BOOL):
+def down_diag_l2r(x, y, olda, oldb):
     
     nx = x + unitstep
     ny = y - unitstep
     an1, an2 = getAngles(nx,ny)
     
-    if WRITE_BOOL == 'T':
-        pen_down()
-    else:
-        pen_up()
-    shoulder.angle = an1
-    time.sleep(wait_time)
-    elbow.angle = an2
-    time.sleep(wait_time)
+    
+    move_slow_E(oldb, an2)
+    move_slow_S(olda, an1)
     print(str(nx) + "," + str(ny))
-    return nx,ny
+    return nx,ny, an1, an2
 
-def down_diag_r2l(x, y, WRITE_BOOL):
+def down_diag_r2l(x, y, olda, oldb):
     
     nx = x - unitstep
     ny = y - unitstep
     an1, an2 = getAngles(nx,ny)
     
-    if WRITE_BOOL == 'T':
-        pen_down()
-    else:
-        pen_up()
-    shoulder.angle = an1
-    time.sleep(wait_time)
-    elbow.angle = an2
-    time.sleep(wait_time)
+    
+    move_slow_E(oldb, an2)
+    move_slow_S(olda, an1)
     print(str(nx) + "," + str(ny))
-    return nx,ny
+    return nx,ny, an1, an2
 
-def up_diag_l2r(x, y, WRITE_BOOL):
+def up_diag_l2r(x, y, olda, oldb):
     
     nx = x + unitstep
     ny = y + unitstep
     an1, an2 = getAngles(nx,ny)
     
-    if WRITE_BOOL == 'T':
-        pen_down()
-    else:
-        pen_up()
-    shoulder.angle = an1
-    time.sleep(wait_time)
-    elbow.angle = an2
-    time.sleep(wait_time)
+    
+    move_slow_E(oldb, an2)
+    move_slow_S(olda, an1)
     print(str(nx) + "," + str(ny))
-    return nx,ny
+    return nx,ny, an1, an2
 
 def up_diag_r2l(x, y, WRITE_BOOL):
     
@@ -205,22 +172,18 @@ def up_diag_r2l(x, y, WRITE_BOOL):
     ny = y + unitstep
     an1, an2 = getAngles(nx,ny)
     
-    if WRITE_BOOL == 'T':
-        pen_down()
-    else:
-        pen_up()
-    shoulder.angle = an1
-    time.sleep(wait_time)
-    elbow.angle = an2
-    time.sleep(wait_time)
+    
+    move_slow_E(oldb, an2)
+    move_slow_S(olda, an1)
     print(str(nx) + "," + str(ny))
-    return nx,ny
+    return nx,ny, an1, an2
 
 #######################
 ## LETTER DEFINITONS ##
 #######################
+'''
 def A(x, y):
-    '''
+    
     x1,y1 = up(x,y,T)
     x2,y2 = up(x1,y1,T)
     x3,y3 = right(x2,y2,T)
@@ -233,24 +196,24 @@ def A(x, y):
     x10,y10 = down_diag_l2r(x9,y9,F)
     x11,y11 = right(x10,y10,F)
     ex,ey = right(x11,y11,F)
-    '''
+    
     ex,ey = up(0,0,T)
     return ex,ey
 
-def B(x, y):
-    x1,y1 = up(x,y,T)
-    x2,y2 = up(x1,y1,T)
-    x3,y3 = right(x2,y2,T)
-    x4,y4 = right(x3,y3,T)
-    x5,y5 = down(x4,y4,T)
-    x6,y6 = down(x5,y5,T)
-    x7,y7 = up(x6,y6,F)
-    x8,y8 = left(x7,y7,T)
-    x9,y9 = left(x8,y8,T)
-    x10,y10 = down(x9,y9,F)
-    x11,y11 = right(x10,y10,T)
-    x12,y12 = right(x11,y11,T)
-    ex,ey = right(x12,y12,F)
+def B(x, y, a, b):
+    x1,y1,a1,a2 = up(x,y,a, b)
+    x2,y2,a1,a2= up(x1,y1,a1, a2)
+    x3,y3,a1,a2 = right(x2,y2,T)
+    x4,y4,a1,a2 = right(x3,y3,T)
+    x5,y5,a1,a2 = down(x4,y4,T)
+    x6,y6,a1,a2 = down(x5,y5,T)
+    x7,y7,a1,a2 = up(x6,y6,F)
+    x8,y8,a1,a2 = left(x7,y7,T)
+    x9,y9,a1,a2 = left(x8,y8,T)
+    x10,y10,a1,a2 = down(x9,y9,F)
+    x11,y11,a1,a2 = right(x10,y10,T)
+    x12,y12,a1,a2 = right(x11,y11,T)
+    ex,ey,a1,a2 = right(x12,y12,F)
     return ex,ey
 
 def C(x, y):
@@ -355,21 +318,21 @@ def J(x, y):
     x10,y10 = right(x9,y9,F)
     ex,ey = right(x10,y10,F)
     return ex,ey
-
-def K(x, y):
-    x1,y1 = up(x,y,T)
-    x2,y2 = up(x1,y1,T)
-    x3,y3 = down(x2,y2,F)
-    x4,y4 = right(x3,y3,T)
-    x5,y5 = up_diag_l2r(x4,y4,T)
-    x6,y6 = down(x5,y5,F)
-    x7,y7 = down(x6,y6,F)
-    x8,y8 = up_diag_r2l(x7,y7,T)
-    x9,y9 = right(x8,y8,F)
-    x10,y10 = right(x9,y9,F)
-    ex,ey = down(x10,y10,F)
-    return ex,ey
-
+'''
+def K(x, y, a, b):
+    x1, y1, a1, b1 = up(x,y,a, b)
+    x2,y2, a1, b1 = up(x1,y1, a1, b1)
+    x3,y3, a1, b1 = down(x2,y2, a1, b1)
+    x4,y4, a1, b1 = right(x3,y3, a1, b1)
+    x5,y5, a1, b1 = up_diag_l2r(x4,y4, a1, b1)
+    x6,y6, a1, b1 = down(x5,y5, a1, b1)
+    x7,y7, a1, b1 = down(x6,y6, a1, b1)
+    x8,y8, a1, b1 = up_diag_r2l(x7,y7, a1, b1)
+    x9,y9, a1, b1 = right(x8,y8, a1, b1)
+    x10,y10, a1, b1 = right(x9,y9, a1, b1)
+    ex,ey, a, b = down(x10,y10, a1, b1)
+    return ex,ey, a, b
+'''
 def L(x, y):
     x1,y1 = up(x,y,T)
     x2,y2 = up(x1,y1,T)
@@ -383,17 +346,17 @@ def L(x, y):
     x10,y10 = right(x9,y9,F)
     ex,ey = right(x10,y10,F)
     return ex,ey
-
-def M(x, y):
-    x1,y1 = up(x,y,T)
-    x2,y2 = up(x1,y1,T)
-    x3,y3 = down_diag_l2r(x2,y2,T)
-    x4,y4 = up_diag_l2r(x3,y3,T)
-    x5,y5 = down(x4,y4,T)
-    x6,y6 = down(x5,y5,T)
-    ex,ey = right(x6,y6,F)
-    return ex,ey
-
+'''
+def M(x, y, a, b):
+    x1,y1, a1, b1 = up(x,y,a, b)
+    x2,y2,a1, b1 = up(x1,y1,a1, b1)
+    x3,y3,a1, b1 = down_diag_l2r(x2,y2,a1, b1)
+    x4,y4,a1, b1 = up_diag_l2r(x3,y3,a1, b1)
+    x5,y5,a1, b1 = down(x4,y4,a1, b1)
+    x6,y6,a1, b1 = down(x5,y5,a1, b1)
+    ex,ey,a, b = right(x6,y6,a1, b1)
+    return ex,ey, a, b
+'''
 def N(x, y):
     x1,y1 = up(x,y,T)
     x2,y2 = up(x1,y1,T)
@@ -405,19 +368,19 @@ def N(x, y):
     x8,y8 = down(x7,y7,F)
     ex,ey = right(x8,y8,F)
     return ex,ey
-
-def O(x, y):
-    x1,y1 = up(x,y,F)
-    x2,y2 = up_diag_l2r(x1,y1,T)
-    x3,y3 = down_diag_l2r(x2,y2,T)
-    x4,y4 = down_diag_r2l(x3,y3,T)
-    x5,y5 = up_diag_r2l(x4,y4,T)
-    x6,y6 = down(x5,y5,F)
-    x7,y7 = right(x6,y6,F)
-    x8,y8 = right(x7,y7,F)
-    ex,ey = right(x8,y8,F)
-    return ex,ey
-
+'''
+def O(x, y, a, b):
+    x1,y1 , a1, b1 = up(x,y,a, b)
+    x2,y2, a1, b1 = up_diag_l2r(x1,y1,a1, b1)
+    x3,y3, a1, b1 = down_diag_l2r(x2,y2,a1, b1)
+    x4,y4, a1, b1 = down_diag_r2l(x3,y3,a1, b1)
+    x5,y5, a1, b1 = up_diag_r2l(x4,y4,a1, b1)
+    x6,y6, a1, b1 = down(x5,y5,a1, b1)
+    x7,y7, a1, b1 = right(x6,y6,a1, b1)
+    x8,y8, a1, b1 = right(x7,y7,a1, b1)
+    ex,ey, a, b = right(x8,y8,a1, b1)
+    return ex,ey, a, b
+'''
 def P(x, y):
     x1,y1 = up(x,y,T)
     x2,y2 = up(x1,y1,T)
@@ -455,23 +418,23 @@ def R(x, y):
     x9,y9 = down_diag_l2r(x8,y8,T)
     ex,ey = right(x9,y9,F)
     return ex,ey
-
-def S(x, y):
-    x1,y1 = up(x,y,F)
-    x2,y2 = up(x1,y1,T)
-    x3,y3 = right(x2,y2,T)
-    x4,y4 = right(x3,y3,T)
-    x5,y5 = down(x4,y4,F)
-    x6,y6 = down(x5,y5,T)
-    x7,y7 = up(x6,y6,F)
-    x8,y8 = left(x7,y7,T)
-    x9,y9 = left(x8,y8,T)
-    x10,y10 = down(x9,y9,F)
-    x11,y11 = right(x10,y10,T)
-    x12,y12 = right(x11,y11,T)
+'''
+def S(x, y, a, b):
+    x1,y1,a1, b1 = up(x,y,a, b)
+    x2,y2,a1, b1 = up(x1,y1,a1, b1)
+    x3,y3,a1, b1 = right(x2,y2,a1, b1)
+    x4,y4,a1, b1 = right(x3,y3,a1, b1)
+    x5,y1, a1, b1 = down(x4,y4,a1, b1)
+    x6,y6,a1, b1 = down(x5,y5,a1, b1)
+    x7,y7,a1, b1 = up(x6,y6,a1, b1)
+    x8,y8,a1, b1 = left(x7,y7,a1, b1)
+    x9,y9,a1, b1 = left(x8,y8,a1, b1)
+    x10,y10,a1, b1 = down(x9,y9,a1, b1)
+    x11,y11,a1, b1 = right(x10,y10,a1, b1)
+    x12,y12,a, b = right(x11,y11,a1, b1)
     ex,ey = right(x12,y12,F)
     return ex,ey
-
+'''
 def T(x, y):
     x1,y1 = right(x,y,F)
     x2,y2 = up(x1,y1,T)
@@ -559,86 +522,22 @@ def Z(x, y):
     x8,y8 = right(x7,y7,T)
     ex,ey = right(x8,y8,F)
     return ex,ey
-
-def execute_letters(letter, x, y):
-    if letter == 'A':
-        nx, ny = A(x,y)
-        return nx, ny
-    elif letter == 'B':
-        nx, ny = B(x,y)
-        return nx, ny
-    elif letter == 'C':
-        nx, ny = C(x,y)
-        return nx, ny
-    elif letter == 'D':
-        nx, ny = D(x,y)
-        return nx, ny
-    elif letter == 'E':
-        nx, ny = E(x,y)
-        return nx, ny
-    elif letter == 'F':
-        nx, ny = F(x,y)
-        return nx, ny
-    elif letter == 'G':
-        nx, ny = G(x,y)
-        return nx, ny
-    elif letter == 'H':
-        nx, ny = H(x,y)
-        return nx, ny
-    elif letter == 'I':
-        nx, ny = I(x,y)
-        return nx, ny
-    elif letter == 'J':
-        nx, ny = J(x,y)
-        return nx, ny
-    elif letter == 'K':
-        nx, ny = K(x,y)
-        return nx, ny
-    elif letter == 'L':
-        nx, ny = L(x,y)
-        return nx, ny
+'''
+def execute_letters(letter, x, y, a, b):
+    if letter == 'K':
+        nx, ny, na, nb = K(x,y, a, b)
+        return nx, ny, na, nb
     elif letter == 'M':
-        nx, ny = M(x,y)
-        return nx, ny
-    elif letter == 'N':
-        nx, ny = N(x,y)
-        return nx, ny
+        nx, ny, na, nb = M(x,y, a, b)
+        return nx, ny, na, nb
     elif letter == 'O':
-        nx, ny = O(x,y)
-        return nx, ny
-    elif letter == 'P':
-        nx, ny = P(x,y)
-        return nx, ny
-    elif letter == 'Q':
-        nx, ny = Q(x,y)
-        return nx, ny
-    elif letter == 'R':
-        nx, ny = R(x,y)
-        return nx, ny
+        nx, ny, na, nb = O(x,y, a, b)
+        return nx, ny, na, nb
     elif letter == 'S':
-        nx, ny = S(x,y)
-        return nx, ny
-    elif letter == 'T':
-        nx, ny = T(x,y)
-        return nx, ny
-    elif letter == 'U':
-        nx, ny = U(x,y)
-        return nx, ny
-    elif letter == 'V':
-        nx, ny = V(x,y)
-        return nx, ny
-    elif letter == 'W':
-        nx, ny = W(x,y)
-        return nx, ny
-    elif letter == 'X':
-        nx, ny = X(x,y)
-        return nx, ny
-    elif letter == 'Y':
-        nx, ny = Y(x,y)
-        return nx, ny
-    elif letter == 'Z':
-        nx, ny = Z(x,y)
-        return nx, ny
+        nx, ny, na, nb = S(x,y, a, b)
+        return nx, ny, na, nb
+    else:
+    print("ERROR")
 
 ####################
 ## MAIN FUNCTIONS ##
@@ -691,17 +590,17 @@ time.sleep(.5)
 elbow.angle = t2
 time.sleep(.5)
 '''
+a = 15
+b = 120
+x = 0
+y = 0
 
-elbow.angle = 0
-input ("0")
-
-elbow.angle = 90
-
-input("90")
-
-elbow.angle = 180 
-
-input("180")
-
-elbow.angle = 90
+x, y, a, b = execute_letters('O', x, y, a, b)
+time.sleep(.25)
+x, y, a, b = execute_letters('K', x, y, a, b)
+time.sleep(.25)
+x, y, a, b = execute_letters('M', x, y, a, b)
+time.sleep(.25)
+x, y, a, b = execute_letters('S', x, y, a, b)
+time.sleep(.25)
 
