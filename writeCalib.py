@@ -50,7 +50,7 @@ def getAngles(x,y):
     j = a/((a1**2)*a2*y)
 
     theta2 = math.atan2(h,j) * 180/3.141592
-    if theta2 < 
+
 
    # print(theta1, theta2)
     return theta1, theta2
