@@ -537,7 +537,7 @@ def execute_letters(letter, x, y, a, b):
         nx, ny, na, nb = S(x,y, a, b)
         return nx, ny, na, nb
     else:
-    print("ERROR")
+        print("ERROR")
 
 ####################
 ## MAIN FUNCTIONS ##
