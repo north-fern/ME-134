@@ -198,16 +198,38 @@ elbow.angle = (18/13)*t2
 '''
 
 #easily continuously run-able test function
+def move_slow_S(pastAng, curr_ang):
+    ang = pastAng
+    while ang < curr_ang:
+        ang = ang + 2
+        shoulder.angle = ang
+        time.sleep(.1)
+
+def move_slow_E(pastAng, curr_ang):
+    ang = pastAng
+    while ang < curr_ang:
+        ang = ang + 2
+        elbow.angle = ang
+        time.sleep(.1)
+
+
+
 shoulder.angle = 0
 elbow.angle = 15
+
+theta10 = 0
+theta20 = 0
 
 while True:
    x = float((input("X Coord? ")))
    y = float((input("Y Coord? ")))
    theta1 , theta2 = getAngles(x,y)
+   move_slow_S(theta10, theta1)
+   move_slow_E(theta20, theta2)
    print("T1: " + str(theta1) + " , T2: " + str(theta2))
-   shoulder.angle = theta1
-   elbow.angle = theta2
+   theta10 = theta1
+   theta20 = theta2
+
 
 
 
