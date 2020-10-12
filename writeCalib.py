@@ -160,5 +160,5 @@ shoulder.angle = t1*(-2/3) + 120
 elbow.angle = (18/13)*t2
 '''
 
-the1, the2 = getAngles(,5)
+the1, the2 = getAngles(-5,5)
 print(str(the1) + " , " + str(the2))
