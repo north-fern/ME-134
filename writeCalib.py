@@ -199,7 +199,7 @@ elbow.angle = (18/13)*t2
 
 #easily continuously run-able test function
 shoulder.angle = 0
-elbow.angle = 0
+elbow.angle = 15
 
 while True:
    x = float((input("X Coord? ")))
