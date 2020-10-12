@@ -36,6 +36,7 @@ unitstep = 1
 ## FIND MOTOR ANGLES ##
 #######################
 def getAngles(x,y):
+'''
     if x < 0:
         xnew = abs(x)
     else:
@@ -48,6 +49,7 @@ def getAngles(x,y):
     #print(c)
     print("A B C are " + str(a) + " "+ str(b) + " " + str(c))
     theta2 = math.acos(c)
+    
     print("THETA 2 is " + str(theta2))
     g = length1 + length2*math.cos(theta2)
     h = g*(y-g)/(length2*math.sin(theta2))
@@ -62,6 +64,24 @@ def getAngles(x,y):
     theta2 = theta2 * 180/3.141592
     print(str(theta1) + "," + str(theta2))
     return theta1 , theta2
+'''
+    a = sqrt(-(a1**2) * (y**2) * ((a1**4) + (-(a2**2) + (x**2) + (y**2))**2 - 2*(a1**2)*((a2**2) + (x**2) + (y**2))))
+    b1 = 1 / ((a1**2)*((x**2) + (y**2)))
+    b2 = 1 / ((a1**2)*((x**2) + (y**2)) * y)
+    c1 = (a1**3)*x + a1*x*(-(a1**2) + (x**2) + (y**2))
+    c2 = (a1**3)*(y**2) + a1*(y**2)*(-(a1**2) + (x**2) + (y**2))
+
+    g1 = b1*(c1+a)
+    g2 = b2*(c2-y*a)
+    theta1 =math.atan(g1, g2)
+
+    h = (-(a1**2)-(a2**2)+(x**2)+(y**2))/(a1*a2)
+    j = a/((a1**2)*a2*y)
+
+    theta2 = math.atan(h,j)
+
+   # print(theta1, theta2)
+    return theta1, theta2
 
 ####################
 ## MAIN FUNCTIONS ##
@@ -163,6 +183,7 @@ t2 = 120
 shoulder.angle = t1*(-2/3) + 120
 elbow.angle = (18/13)*t2
 '''
+
 
 the1, the2 = getAngles(5,5)
 print(str(the1) + " , " + str(the2))
