@@ -218,7 +218,7 @@ shoulder.angle = 0
 elbow.angle = 15
 
 theta10 = 0
-theta20 = 0
+theta20 = 15
 
 while True:
    x = float((input("X Coord? ")))
