@@ -15,7 +15,7 @@ pca.frequency = 50
 # declaring servos
 shoulder = servo.Servo(pca.channels[0])
 elbow= servo.Servo(pca.channels[4])
-#pen = servo.Servo(pca.channels[6])
+
  
 #setting lengths for arms
 a1 = 5.07
@@ -25,17 +25,12 @@ wait_time = .2
 #setting unit step of letters
 unitstep = 1
 
-#setting up button
-#https://raspberrypihq.com/use-a-push-button-with-raspberry-pi-gpio/
-#GPIO.setwarnings(False)
-#GPIO.setmode(GPIO.BOARD)
-#GPIO.setup(10, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
-#set to pin 10 - connect from pin 10 to 3.3 power w/ resistor
-
 #######################
 ## FIND MOTOR ANGLES ##
 #######################
 def getAngles(x,y):
+
+   ''' 
     a = math.sqrt(-(a1**2) * (y**2) * ((a1**4) + (-(a2**2) + (x**2) + (y**2))**2 - 2*(a1**2)*((a2**2) + (x**2) + (y**2))))
     b1 = 1 / ((a1**2)*((x**2) + (y**2)))
     b2 = 1 / ((a1**2)*((x**2) + (y**2)) * y)
@@ -50,11 +45,27 @@ def getAngles(x,y):
     j = a/((a1**2)*a2*y)
 
     theta2 = math.atan2(h,j) * 180/3.141592
+'''
 
+t1 = math.pi/2 - math.atan2( (a1**3*x + a1*x*(-a2**2 + x**2 + y**2) + \
+     math.sqrt(-(a1**2*y**2*(a1**4 + (-a2**2 + x**2 + y**2)**2 - \
+     2*a1**2*(a2**2 + x**2 + y**2)))))/(a1**2*(x**2 + y**2)),\
+     (a1**3*y**2 + a1*y**2*(-a2**2 + x**2 + y**2) - \
+     x*math.sqrt(-(a1**2*y**2*(a1**4 + (-a2**2 + x**2 + y**2)**2 -\
+     2*a1**2*(a2**2 + x**2 + y**2)))))/(a1**2*y*(x**2 + y**2)))
+
+t2 = math.acos((x**2 + y**2 - a1**2 - a2**2)/(2 * a1 * a2))
 
    # print(theta1, theta2)
-    return theta1, theta2
+
+t11 = t1 * 180/3.141592
+t22 = t2 * 180/3.141592
+    return t11, t22
+
+
 '''
+
+VERSION 2: Not Suitable
     if x < 0:
         xnew = abs(x)
     else:
@@ -89,6 +100,7 @@ def getAngles(x,y):
 ####################
 
 '''
+Test Function 1 with offsets
 x1 = 0
 y1 = 0
 t1 = 0
@@ -151,6 +163,7 @@ elbow.angle = (18/13)*90
 '''
 
 '''
+Test Function 2 with Offsets
 t1 = 0
 t2 = 0
 shoulder.angle = t1*(-2/3) + 120
@@ -185,6 +198,9 @@ shoulder.angle = t1*(-2/3) + 120
 elbow.angle = (18/13)*t2
 '''
 
+#easily continuously run-able test function
+shoulder.angle = 0
+elbow.angle = 0
 
 while True:
    x = float((input("X Coord? ")))
