@@ -216,10 +216,10 @@ def move_slow_E(pastAng, curr_ang):
 
 
 
-shoulder.angle = 0
+shoulder.angle = 120
 elbow.angle = 15
 
-theta10 = 0
+theta10 = 120
 theta20 = 15
 
 while True:
