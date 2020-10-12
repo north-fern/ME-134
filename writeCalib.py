@@ -58,7 +58,9 @@ def getAngles(x,y):
     #print(theta1, theta2)
 
     t11 = t1 * 180/3.141592
+    t1 = t11*(-2/3) + 120
     t22 = t2 * 180/3.141592
+    t2 = t22*(18/13)
     return t11, t22
 
 
