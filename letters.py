@@ -166,7 +166,7 @@ def up_diag_l2r(x, y, olda, oldb):
     print(str(nx) + "," + str(ny))
     return nx,ny, an1, an2
 
-def up_diag_r2l(x, y, WRITE_BOOL):
+def up_diag_r2l(x, y, olda, oldb):
     
     nx = x - unitstep
     ny = y + unitstep
