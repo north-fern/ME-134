@@ -208,7 +208,7 @@ def move_slow_S(pastAng, curr_ang):
             shoulder.angle = ang
             time.sleep(.1)
     else:
-        while ang < curr_ang:
+        while ang > curr_ang:
             ang = ang - 2
             shoulder.angle = ang
             time.sleep(.1)
@@ -221,7 +221,7 @@ def move_slow_E(pastAng, curr_ang):
             elbow.angle = ang
             time.sleep(.1)
     else:
-        while ang < curr_ang:
+        while ang > curr_ang:
             ang = ang - 2
             elbow.angle = ang
             time.sleep(.1)
