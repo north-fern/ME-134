@@ -36,6 +36,10 @@ unitstep = 1
 ## FIND MOTOR ANGLES ##
 #######################
 def getAngles(x,y):
+    if x < 0:
+        xnew = abs(x)
+    else:
+        xnew = x
     a = (x**2) + (y**2) - (length1**2) - (length2**2)
     #print(a)
     b = (2*length2*length1)
@@ -43,18 +47,16 @@ def getAngles(x,y):
     c = a/b
     #print(c)
     print("A B C are " + str(a) + " "+ str(b) + " " + str(c))
-    theta2 = math.acos(2*c)
+    theta2 = math.acos(c)
     print("THETA 2 is " + str(theta2))
-    d = length1 + length2*math.cos(theta2)
-    #print(d)
-    e = length2*math.sin(theta2)*((x + length2*math.sin(theta2))/(length1 + length2*math.cos(theta2)))
-    #print(e)
-    if e == 0:
-        h = 0
-    else:
-        h = y/(d*e)
-    print("D and E are " + str(d) + " " + str(e))
-    theta1 = math.asin(2*h) * 180/3.141592
+    g = lenth1 + length2*math.cos(theta2)
+    h = g*(y-g)/(length2*math.sin(theta2))
+    j = h - length2*math.sin(theta2)
+    if x < 0:
+        theta1 = 180 - (math.asin(xnew / j) * 180/3.141592)
+    else
+        theta1 = math.asin(xnew / j) * 180/3.141592
+
     theta2 = theta2 * 180/3.141592
     print(str(theta1) + "," + str(theta2))
     return theta1 , theta2
@@ -160,5 +162,5 @@ shoulder.angle = t1*(-2/3) + 120
 elbow.angle = (18/13)*t2
 '''
 
-the1, the2 = getAngles(-5,5)
+the1, the2 = getAngles(5,5)
 print(str(the1) + " , " + str(the2))
