@@ -190,6 +190,7 @@ while True:
    x = float((input("X Coord? ")))
    y = float((input("Y Coord? ")))
    theta1 , theta2 = getAngles(x,y)
+   print("T1: " + str(theta1) + " , T2: " + str(theta2))
    shoulder.angle = theta1
    elbow.angle = theta2
 
