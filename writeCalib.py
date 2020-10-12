@@ -18,12 +18,12 @@ elbow= servo.Servo(pca.channels[4])
 #pen = servo.Servo(pca.channels[6])
  
 #setting lengths for arms
-length1 = 8
-length2 = 15
+length1 = 5.07
+length2 = 3.81
 wait_time = .2
 
 #setting unit step of letters
-unitstep = 6
+unitstep = 1
 
 #setting up button
 #https://raspberrypihq.com/use-a-push-button-with-raspberry-pi-gpio/
@@ -114,12 +114,12 @@ time.sleep(.5)
 elbow.angle = 0
 input ("0")
 
-elbow.angle = 90
+elbow.angle = (18/13)*90
 
 input("90")
 
-elbow.angle = 180 
+elbow.angle = (18/13)*180 
 
 input("180")
 
-elbow.angle = 90
+elbow.angle = (18/13)*90
