@@ -36,7 +36,7 @@ unitstep = 1
 ## FIND MOTOR ANGLES ##
 #######################
 def getAngles(x,y):
-    a = (x^2) + (y^2) - (length1^2) - (length2^2)
+    a = (x**2) + (y**2) - (length1**2) - (length2**2)
     #print(a)
     b = (2*length2*length1)
     #print(b)
