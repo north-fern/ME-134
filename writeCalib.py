@@ -110,7 +110,7 @@ time.sleep(.5)
 elbow.angle = t2
 time.sleep(.5)
 '''
-
+'''
 elbow.angle = 0
 input ("0")
 
@@ -123,3 +123,38 @@ elbow.angle = (18/13)*130
 input("180")
 
 elbow.angle = (18/13)*90
+'''
+t1 = 0
+t2 = 0
+shoulder.angle = t1*(-2/3) + 120
+elbow.angle = (18/13)*t2
+
+input("30?")
+
+t1 = 30
+t2 = 30
+shoulder.angle = t1*(-2/3) + 120
+elbow.angle = (18/13)*t2
+
+input("60")
+
+t1 = 60
+t2 = 60
+shoulder.angle = t1*(-2/3) + 120
+elbow.angle = (18/13)*t2
+
+input("90")
+
+t1 = 90
+t2 = 90
+shoulder.angle = t1*(-2/3) + 120
+elbow.angle = (18/13)*t2
+
+input("120")
+
+t1 = 120
+t2 = 120
+shoulder.angle = t1*(-2/3) + 120
+elbow.angle = (18/13)*t2
+
+
