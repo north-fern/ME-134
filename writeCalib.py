@@ -43,7 +43,7 @@ def getAngles(x,y):
     c = a/b
     #print(c)
     print("A B C are " + str(a) + " "+ str(b) + " " + str(c))
-    theta2 = math.acos(c)
+    theta2 = math.acos(2*c)
     print("THETA 2 is " + str(theta2))
     d = length1 + length2*math.cos(theta2)
     #print(d)
@@ -54,7 +54,7 @@ def getAngles(x,y):
     else:
         h = y/(d*e)
     print("D and E are " + str(d) + " " + str(e))
-    theta1 = math.asin(h) * 180/3.141592
+    theta1 = math.asin(2*h) * 180/3.141592
     theta2 = theta2 * 180/3.141592
     print(str(theta1) + "," + str(theta2))
     return theta1 , theta2
@@ -160,5 +160,5 @@ shoulder.angle = t1*(-2/3) + 120
 elbow.angle = (18/13)*t2
 '''
 
-the1, the2 = getAngles(-5,5)
+the1, the2 = getAngles(,5)
 print(str(the1) + " , " + str(the2))
