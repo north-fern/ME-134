@@ -186,23 +186,12 @@ elbow.angle = (18/13)*t2
 '''
 
 
-the1, the2 = getAngles(7,2)
-print(str(the1) + " , " + str(the2))
-
-the1, the2 = getAngles(4,4)
-print(str(the1) + " , " + str(the2))
-
-the1, the2 = getAngles(4,5)
-print(str(the1) + " , " + str(the2))
-
-the1, the2 = getAngles(5,5)
-print(str(the1) + " , " + str(the2))
-
-the1, the2 = getAngles(5,4)
-print(str(the1) + " , " + str(the2))
-
-the1, the2 = getAngles(4,4)
-print(str(the1) + " , " + str(the2))
+while True:
+   x = input("X Coord? ")
+   y = input("Y Coord? ")
+   theta1, theta2 = getAngles(x,y)
+   shoulder.angle = theta1
+   elbow.angle = theta2
 
 
 
