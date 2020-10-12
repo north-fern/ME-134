@@ -643,6 +643,8 @@ def execute_letters(letter, x, y):
 ####################
 ## MAIN FUNCTIONS ##
 ####################
+
+'''
 x1 = 0
 y1 = 0
 t1 = 0
@@ -688,4 +690,18 @@ shoulder.angle = t1*(-2/3) + 120
 time.sleep(.5)
 elbow.angle = t2
 time.sleep(.5)
+'''
+
+elbow.angle = 0
+input ("0")
+
+elbow.angle = 90
+
+input("90")
+
+elbow.angle = 180 
+
+input("180")
+
+elbow.angle = 90
 
