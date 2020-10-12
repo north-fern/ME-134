@@ -49,7 +49,7 @@ def getAngles(x,y):
     print("A B C are " + str(a) + " "+ str(b) + " " + str(c))
     theta2 = math.acos(c)
     print("THETA 2 is " + str(theta2))
-    g = lenth1 + length2*math.cos(theta2)
+    g = length1 + length2*math.cos(theta2)
     h = g*(y-g)/(length2*math.sin(theta2))
     j = h - length2*math.sin(theta2)
     if x < 0:
