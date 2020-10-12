@@ -44,12 +44,12 @@ def getAngles(x,y):
 
     g1 = b1*(c1+a)
     g2 = b2*(c2-y*a)
-    theta1 =math.atan(g1, g2)
+    theta1 =math.atan2(g1, g2)
 
     h = (-(a1**2)-(a2**2)+(x**2)+(y**2))/(a1*a2)
     j = a/((a1**2)*a2*y)
 
-    theta2 = math.atan(h,j)
+    theta2 = math.atan2(h,j)
 
    # print(theta1, theta2)
     return theta1, theta2
