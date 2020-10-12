@@ -36,6 +36,23 @@ unitstep = 1
 ## FIND MOTOR ANGLES ##
 #######################
 def getAngles(x,y):
+    a = sqrt(-(a1**2) * (y**2) * ((a1**4) + (-(a2**2) + (x**2) + (y**2))**2 - 2*(a1**2)*((a2**2) + (x**2) + (y**2))))
+    b1 = 1 / ((a1**2)*((x**2) + (y**2)))
+    b2 = 1 / ((a1**2)*((x**2) + (y**2)) * y)
+    c1 = (a1**3)*x + a1*x*(-(a1**2) + (x**2) + (y**2))
+    c2 = (a1**3)*(y**2) + a1*(y**2)*(-(a1**2) + (x**2) + (y**2))
+
+    g1 = b1*(c1+a)
+    g2 = b2*(c2-y*a)
+    theta1 =math.atan(g1, g2)
+
+    h = (-(a1**2)-(a2**2)+(x**2)+(y**2))/(a1*a2)
+    j = a/((a1**2)*a2*y)
+
+    theta2 = math.atan(h,j)
+
+   # print(theta1, theta2)
+    return theta1, theta2
 '''
     if x < 0:
         xnew = abs(x)
@@ -65,23 +82,6 @@ def getAngles(x,y):
     print(str(theta1) + "," + str(theta2))
     return theta1 , theta2
 '''
-    a = sqrt(-(a1**2) * (y**2) * ((a1**4) + (-(a2**2) + (x**2) + (y**2))**2 - 2*(a1**2)*((a2**2) + (x**2) + (y**2))))
-    b1 = 1 / ((a1**2)*((x**2) + (y**2)))
-    b2 = 1 / ((a1**2)*((x**2) + (y**2)) * y)
-    c1 = (a1**3)*x + a1*x*(-(a1**2) + (x**2) + (y**2))
-    c2 = (a1**3)*(y**2) + a1*(y**2)*(-(a1**2) + (x**2) + (y**2))
-
-    g1 = b1*(c1+a)
-    g2 = b2*(c2-y*a)
-    theta1 =math.atan(g1, g2)
-
-    h = (-(a1**2)-(a2**2)+(x**2)+(y**2))/(a1*a2)
-    j = a/((a1**2)*a2*y)
-
-    theta2 = math.atan(h,j)
-
-   # print(theta1, theta2)
-    return theta1, theta2
 
 ####################
 ## MAIN FUNCTIONS ##
