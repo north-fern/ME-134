@@ -348,13 +348,34 @@ def L(x, y):
     return ex,ey
 '''
 def M(x, y, a, b):
-    x1,y1, a1, b1 = up(x,y,a, b)
-    x2,y2,a1, b1 = up(x1,y1,a1, b1)
-    x3,y3,a1, b1 = down_diag_l2r(x2,y2,a1, b1)
-    x4,y4,a1, b1 = up_diag_l2r(x3,y3,a1, b1)
-    x5,y5,a1, b1 = down(x4,y4,a1, b1)
-    x6,y6,a1, b1 = down(x5,y5,a1, b1)
-    ex,ey,a, b = right(x6,y6,a1, b1)
+    x1, y1, a1, b1 = up(x,y,a, b)
+    x2, y2, a2, b2 = up(x1, y1, a1, b1)
+    x3,y3, a3, b3 = up(x2, y2, a2, b2)
+    x4,y4, a4, b4 = up(x3,y3, a3, b3)
+    x5,y5,a5, b5 = up(x4,y4, a4, b4)
+    x6,y6,a6, b6 = up(x5,y5,a5, b5)
+    x7,y7,a7, b7 = up(x6,y6,a6, b6)
+    x8,y8,a8, b8 = up(x7,y7,a7, b7 )
+    x9,y9,a9, b9 = down_diag_l2r(x8,y8,a8, b8)
+    x10,y10,a10, b10 = down_diag_l2r(x9,y9,a9, b9 )
+    x11,y11,a11, b11 = down_diag_l2r(x10,y10,a10, b10)
+    x12,y12,a12, b12 = down_diag_l2r(x11,y11,a11, b11)
+    x13,y13,a13, b13 = up_diag_l2r(x12,y12,a12, b12)
+    x14,y14,a14, b14 = up_diag_l2r( x13,y13,a13, b13)
+    x15,y15,a15, b15 = up_diag_l2r(x14,y14,a14, b14)
+    x16,y16,a16, b16 = up_diag_l2r(x15,y15,a15, b15)
+    x17,y17,a17, b17 = down(x16,y16,a16, b16)
+    x18,y18,a18, b18 = down(x17,y17,a17, b17)
+    x19,y19,a19, b19 = down(x18,y18,a18, b18 )
+    x20,y20,a20, b20 = down(x19,y19,a19, b19)
+    x21,y21,a21, b21 = down(x20,y20,a20, b20)
+    x22,y22,a22, b22 = down(x21,y21,a21, b21)
+    x23,y23,a23, b23 = down(x22,y22,a22, b22)
+    x24,y24,a24, b24 = down(x23,y23,a23, b23)
+    e25,e25,a25, b25 = right(x24,y24,a24, b24)
+    e26,e26,a26, b26 = right(e25,e25,a25, b25)
+    e27,e27,a27, b27 = right(e26,e26,a26, b26)
+    ex,ey,a, b = right(e27,e27,a27, b27)
     return ex,ey, a, b
 '''
 def N(x, y):
@@ -613,8 +634,12 @@ time.sleep(.5)
 '''
 a = 120
 b = 90
-x = 0
-y = 8
+
+
+
+x = int(input("starting x coordinate? "))
+y = int(input("starting y coordinate?"))
+
 
 shoulder.angle = a
 elbow.angle = b
@@ -623,13 +648,10 @@ input("READY?")
 x, y, a, b = execute_letters('O', x, y, a, b)
 time.sleep(.25)
 input("WAIT")
-x, y, a, b = execute_letters('K', x, y, a, b)
-time.sleep(.25)
-input("WAIT")
+x = int(input("starting x coordinate? "))
+y = int(input("starting y coordinate?"))
+
 x, y, a, b = execute_letters('M', x, y, a, b)
-time.sleep(.25)
-input("WAIT")
-x, y, a, b = execute_letters('S', x, y, a, b)
 time.sleep(.25)
 input("DONE")
 
