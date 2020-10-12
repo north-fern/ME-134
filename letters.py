@@ -591,7 +591,7 @@ elbow.angle = t2
 time.sleep(.5)
 '''
 a = 120
-b = 15
+b = 90
 x = 0
 y = 4
 
