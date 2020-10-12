@@ -187,3 +187,21 @@ elbow.angle = (18/13)*t2
 
 the1, the2 = getAngles(7,2)
 print(str(the1) + " , " + str(the2))
+
+the1, the2 = getAngles(2,2)
+print(str(the1) + " , " + str(the2))
+
+the1, the2 = getAngles(2,3)
+print(str(the1) + " , " + str(the2))
+
+the1, the2 = getAngles(3,3)
+print(str(the1) + " , " + str(the2))
+
+the1, the2 = getAngles(3,2)
+print(str(the1) + " , " + str(the2))
+
+the1, the2 = getAngles(2,2)
+print(str(the1) + " , " + str(the2))
+
+
+
