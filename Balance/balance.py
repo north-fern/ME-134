@@ -37,7 +37,7 @@ s3_curt_ang = 0
 
 
 while True:
-    motor = random.int(0,2)
+    motor = random.randint(0,2)
     print("Random motor choice is :" + str(motor))
     angleDelta = random.randrange(-5, 5, 1)
     imu.readSensor()
