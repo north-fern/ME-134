@@ -37,42 +37,55 @@ s3_curt_ang = 0
 
 
 while True:
-    motor = random.randrange(0,2,1)
+    motor = random.int(0,2)
+    print("Random motor choice is :" + str(motor))
     angleDelta = random.randrange(-5, 5, 1)
     imu.readSensor()
     imu.computeOrientation()
+
+    print("M1: " + str(s1_curt_ang) + " M2: " + str(s2_curt_ang) + " M3: " + str(s3_curt_ang))
+
     pre_diff_pitch = 100
     pre_diff_roll = 100
     if motor == 0:
         if (s1_curt_ang + angleDelta) >= 0 and (s1_curt_ang + angleDelta)  <= 180:
             s1.angle = s1_curt_ang + angleDelta
+            time.sleep(.1)
             if abs(imu.roll - goal_x) < pre_diff_pitch or abs(imu.roll - goal_y) < pre_diff_roll:
                 pre_diff_pitch = abs(imu.pitch - goal_x)
                 pre_diff_roll = abs(imu.roll - goal_y)
                 s1_curt_ang = s1_curt_ang + angleDelta
             else:
                 s1.angle = s1_curt_ang
+                time.sleep(.1)
         else:
             s1.angle = s1_curt_ang
+            time.sleep(.1)
     if motor == 1:
         if (s2_curt_ang + angleDelta) >= 0 and (s2_curt_ang + angleDelta)  <= 180:
             s2.angle = s2_curt_ang + angleDelta
+            time.sleep(.1)
             if abs(imu.pitch - goal_x) < pre_diff_pitch or abs(imu.roll - goal_y) < pre_diff_roll:
                 pre_diff_pitch = abs(imu.pitch - goal_x)
                 pre_diff_roll = abs(imu.roll - goal_y)
                 s1_curt_ang = s2_curt_ang + angleDelta
             else:
                 s2.angle = s2_curt_ang
+                time.sleep(.1)
         else:
             s2.angle = s2_curt_ang
+            time.sleep(.1)
     if motor == 2:
         if (s3_curt_ang + angleDelta) >= 0 and (s3_curt_ang + angleDelta)  <= 180:
             s3.angle = s3_curt_ang + angleDelta
+            time.sleep(.1)
             if abs(imu.pitch - goal_x) < pre_diff_pitch or abs(imu.roll - goal_y) < pre_diff_roll:
                 pre_diff_pitch = abs(imu.pitch - goal_x)
                 pre_diff_roll = abs(imu.roll - goal_y)
                 s1_curt_ang = s3_curt_ang + angleDelta
             else:
                 s3.angle = s3_curt_ang
+                time.sleep(.1)
         else:
             s3.angle = s3_curt_ang
+            time.sleep(.1)
