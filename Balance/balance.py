@@ -15,7 +15,10 @@ address = 0x68
 bus = smbus.SMBus(1)
 imu = MPU9250.MPU9250(bus, address)
 imu.begin()
-
+imu.readSensor()
+imu.computeOrientation()
+goal_x = imu.roll
+goal_y = imu.pitch
 
 i2c = busio.I2C(SCL, SDA)
 pca = PCA9685(i2c)
