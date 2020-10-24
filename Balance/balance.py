@@ -44,26 +44,35 @@ while True:
     pre_diff_pitch = 100
     pre_diff_roll = 100
     if motor == 0:
-        s1.angle = s1_curt_ang + angleDelta
-        if abs(imu.roll - goal_x) < pre_diff_pitch or abs(imu.roll - goal_y) < pre_diff_roll:
-            pre_diff_pitch = abs(imu.pitch - goal_x)
-            pre_diff_roll = abs(imu.roll - goal_y)
-            s1_curt_ang = s1_curt_ang + angleDelta
+        if (s1_curt_ang + angleDelta) >= 0 or (s1_curt_ang + angleDelta)  <= 180:
+            s1.angle = s1_curt_ang + angleDelta
+            if abs(imu.roll - goal_x) < pre_diff_pitch or abs(imu.roll - goal_y) < pre_diff_roll:
+                pre_diff_pitch = abs(imu.pitch - goal_x)
+                pre_diff_roll = abs(imu.roll - goal_y)
+                s1_curt_ang = s1_curt_ang + angleDelta
+            else:
+                s1.angle = s1_curt_ang
         else:
             s1.angle = s1_curt_ang
     if motor == 1:
-        s2.angle = s2_curt_ang + angleDelta
-        if abs(imu.pitch - goal_x) < pre_diff_pitch or abs(imu.roll - goal_y) < pre_diff_roll:
-            pre_diff_pitch = abs(imu.pitch - goal_x)
-            pre_diff_roll = abs(imu.roll - goal_y)
-            s1_curt_ang = s2_curt_ang + angleDelta
+        if (s2_curt_ang + angleDelta) >= 0 or (s2_curt_ang + angleDelta)  <= 180:
+            s2.angle = s2_curt_ang + angleDelta
+            if abs(imu.pitch - goal_x) < pre_diff_pitch or abs(imu.roll - goal_y) < pre_diff_roll:
+                pre_diff_pitch = abs(imu.pitch - goal_x)
+                pre_diff_roll = abs(imu.roll - goal_y)
+                s1_curt_ang = s2_curt_ang + angleDelta
+            else:
+                s2.angle = s2_curt_ang
         else:
             s2.angle = s2_curt_ang
     if motor == 2:
-        s3.angle = s3_curt_ang + angleDelta
-        if abs(imu.pitch - goal_x) < pre_diff_pitch or abs(imu.roll - goal_y) < pre_diff_roll:
-            pre_diff_pitch = abs(imu.pitch - goal_x)
-            pre_diff_roll = abs(imu.roll - goal_y)
-            s1_curt_ang = s3_curt_ang + angleDelta
+        if (s3_curt_ang + angleDelta) >= 0 or (s3_curt_ang + angleDelta)  <= 180:
+            s3.angle = s3_curt_ang + angleDelta
+            if abs(imu.pitch - goal_x) < pre_diff_pitch or abs(imu.roll - goal_y) < pre_diff_roll:
+                pre_diff_pitch = abs(imu.pitch - goal_x)
+                pre_diff_roll = abs(imu.roll - goal_y)
+                s1_curt_ang = s3_curt_ang + angleDelta
+            else:
+                s3.angle = s3_curt_ang
         else:
             s3.angle = s3_curt_ang
