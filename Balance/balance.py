@@ -43,7 +43,7 @@ def update_vals():
 
 
 
-While True:
+while True:
     motor = random.randrange(0,2,1)
     angleDelta = random.randrange(-5, 5, 1)
     pre_diff_pitch = 100
