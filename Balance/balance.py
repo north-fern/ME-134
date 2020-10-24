@@ -35,8 +35,8 @@ imu.computeOrientation()
 goal_x = imu.roll
 goal_y = imu.pitch
 
-print("Goal vals are" + str(goal_y) + "  " + str(goal_y))
-
+time.sleep(.1)
+print("Goal vals are" + str(goal_x) + "  " + str(goal_y))
 '''
 setting up motor driver
 '''
@@ -66,7 +66,8 @@ pre_diff_roll = 1000
 pre_diff_pitch = 1000
 
 while val == True:
-
+    print("Goal vals are" + str(goal_x) + "  " + str(goal_y))
+    
     ##randomly choose motor
     motor = random.randint(0,2)
     print("Random motor choice is :" + str(motor))
