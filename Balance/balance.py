@@ -44,7 +44,7 @@ while True:
     pre_diff_pitch = 100
     pre_diff_roll = 100
     if motor == 0:
-        if (s1_curt_ang + angleDelta) >= 0 or (s1_curt_ang + angleDelta)  <= 180:
+        if (s1_curt_ang + angleDelta) >= 0 and (s1_curt_ang + angleDelta)  <= 180:
             s1.angle = s1_curt_ang + angleDelta
             if abs(imu.roll - goal_x) < pre_diff_pitch or abs(imu.roll - goal_y) < pre_diff_roll:
                 pre_diff_pitch = abs(imu.pitch - goal_x)
@@ -55,7 +55,7 @@ while True:
         else:
             s1.angle = s1_curt_ang
     if motor == 1:
-        if (s2_curt_ang + angleDelta) >= 0 or (s2_curt_ang + angleDelta)  <= 180:
+        if (s2_curt_ang + angleDelta) >= 0 and (s2_curt_ang + angleDelta)  <= 180:
             s2.angle = s2_curt_ang + angleDelta
             if abs(imu.pitch - goal_x) < pre_diff_pitch or abs(imu.roll - goal_y) < pre_diff_roll:
                 pre_diff_pitch = abs(imu.pitch - goal_x)
@@ -66,7 +66,7 @@ while True:
         else:
             s2.angle = s2_curt_ang
     if motor == 2:
-        if (s3_curt_ang + angleDelta) >= 0 or (s3_curt_ang + angleDelta)  <= 180:
+        if (s3_curt_ang + angleDelta) >= 0 and (s3_curt_ang + angleDelta)  <= 180:
             s3.angle = s3_curt_ang + angleDelta
             if abs(imu.pitch - goal_x) < pre_diff_pitch or abs(imu.roll - goal_y) < pre_diff_roll:
                 pre_diff_pitch = abs(imu.pitch - goal_x)
