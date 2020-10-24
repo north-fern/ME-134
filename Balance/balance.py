@@ -4,7 +4,7 @@ import sys
 from board import SCL, SDA
 import busio
 from adafruit_pca9685 import PCA9685
-import random2
+import random2 as random
 from adafruit_motor  import servo
 import os
 import smbus
