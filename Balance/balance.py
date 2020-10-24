@@ -57,16 +57,16 @@ initialize current angles of servo
 s1_curt_ang = 0
 s2_curt_ang = 0
 s3_curt_ang = 0
+val = True
 
-
-while True:
+while val == True:
 
     ##randomly choose motor
     motor = random.randint(0,2)
     print("Random motor choice is :" + str(motor))
 
     ## randomly choose angle to change by
-    angleDelta = random.randint(-15, 15)
+    angleDelta = random.randint(-90, 90)
     imu.readSensor()
     imu.computeOrientation()
     print("M1: " + str(s1_curt_ang) + " M2: " + str(s2_curt_ang) + " M3: " + str(s3_curt_ang))
@@ -126,3 +126,7 @@ while True:
         else:
             s3.angle = s3_curt_ang
             time.sleep(.1)
+    
+    if pre_diff_roll == 0 and pre_diff_pitch == 0:
+        time.sleep(30)
+        val = False
