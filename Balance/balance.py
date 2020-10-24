@@ -59,6 +59,7 @@ s2_curt_ang = 0
 s3_curt_ang = 0
 val = True
 
+anglechange = 90
 while val == True:
 
     ##randomly choose motor
@@ -66,7 +67,7 @@ while val == True:
     print("Random motor choice is :" + str(motor))
 
     ## randomly choose angle to change by
-    angleDelta = random.randint(-90, 90)
+    angleDelta = random.randint(-anglechange, anglechange)
     imu.readSensor()
     imu.computeOrientation()
     print("M1: " + str(s1_curt_ang) + " M2: " + str(s2_curt_ang) + " M3: " + str(s3_curt_ang))
