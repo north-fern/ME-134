@@ -7,7 +7,7 @@ from board import SCL, SDA
 import busio
 from adafruit_pca9685 import PCA9685
 import random
-
+from adafruit_motor  import servo
 
 i2c = busio.I2C(SCL, SDA)
 pca = PCA9685(i2c)
