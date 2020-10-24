@@ -6,7 +6,7 @@ import PID
 from board import SCL, SDA
 import busio
 from adafruit_pca9685 import PCA9685
-import random
+import random2
 from adafruit_motor  import servo
 
 i2c = busio.I2C(SCL, SDA)
@@ -48,7 +48,7 @@ while True:
     angleDelta = random.randrange(-5, 5, 1)
     pre_diff_pitch = 100
     pre_diff_roll = 100
-    if motor = 0
+    if motor == 0
         s1.angle = s1_curt_ang + angleDelta
         if abs(fuse.pitch - goal_x) < pre_diff_pitch or abs(fuse.roll - goal_y) < pre_diff_roll:
             pre_diff_pitch = abs(fuse.pitch - goal_x)
@@ -56,7 +56,7 @@ while True:
             s1_curt_ang = s1_curt_ang + angleDelta
         else:
             s1.angle = s1_curt_ang
-    if motor = 1    
+    if motor == 1    
         s2.angle = s2_curt_ang + angleDelta
         if abs(fuse.pitch - goal_x) < pre_diff_pitch or abs(fuse.roll - goal_y) < pre_diff_roll:
             pre_diff_pitch = abs(fuse.pitch - goal_x)
@@ -64,7 +64,7 @@ while True:
             s1_curt_ang = s2_curt_ang + angleDelta
         else:
             s2.angle = s2_curt_ang
-    if motor = 2
+    if motor == 2
         s3.angle = s3_curt_ang + angleDelta
         if abs(fuse.pitch - goal_x) < pre_diff_pitch or abs(fuse.roll - goal_y) < pre_diff_roll:
             pre_diff_pitch = abs(fuse.pitch - goal_x)
