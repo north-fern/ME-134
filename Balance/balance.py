@@ -2,7 +2,6 @@ from fusion import Fusion
 import FaBo9Axis_MPU9250 
 import time
 import sys
-import PID
 from board import SCL, SDA
 import busio
 from adafruit_pca9685 import PCA9685
