@@ -67,7 +67,7 @@ pre_diff_pitch = 1000
 
 while val == True:
     print("Goal vals are" + str(goal_x) + "  " + str(goal_y))
-    
+
     ##randomly choose motor
     motor = random.randint(0,2)
     print("Random motor choice is :" + str(motor))
@@ -115,7 +115,7 @@ while val == True:
                 #check to see if new value is better; if it is, change baselines
                 pre_diff_pitch = abs(imu.pitch - goal_x)
                 pre_diff_roll = abs(imu.roll - goal_y)
-                s1_curt_ang = s2_curt_ang + angleDelta
+                s2_curt_ang = s2_curt_ang + angleDelta
             else:
                 s2.angle = s2_curt_ang
                 time.sleep(.1)
@@ -134,7 +134,7 @@ while val == True:
                 #check to see if new value is better; if it is, change baselines
                 pre_diff_pitch = abs(imu.pitch - goal_x)
                 pre_diff_roll = abs(imu.roll - goal_y)
-                s1_curt_ang = s3_curt_ang + angleDelta
+                s3_curt_ang = s3_curt_ang + angleDelta
             else:
                 s3.angle = s3_curt_ang
                 time.sleep(.1)
