@@ -20,12 +20,19 @@ input()
 def left():
     for i in range(90):
         side.angle = 180-i
-        servo.angle = 0
+        updown.angle = 0
+    updown.angle = 30
 
+def right():
+    for j in range(90):
+        side.angle = j
+        updown.angle = 0
+    updown.angle = 30
 
 
 
 left()
+right()
 
 pca.deinit()
 
