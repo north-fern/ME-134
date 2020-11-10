@@ -30,13 +30,31 @@ def right():
     updown.angle = 30
 
 
-
-left()
-side.angle = 0
-time.sleep(.1)
-input()
-
-right()
+while True:
+    left()
+    side.angle = 75
+    time.sleep(.1)
+    side.angle = 55
+    time.sleep(.1)
+    side.angle = 35
+    time.sleep(.1)
+    side.angle = 0
+    time.sleep(.1)
+    side.angle = 0
+    time.sleep(.1)
+    right()
+    '''
+    side.angle = 0
+    time.sleep(.1)
+    side.angle = 0
+    time.sleep(.1)
+    side.angle = 35
+    time.sleep(.1)
+    side.angle = 55
+    time.sleep(.1)
+    side.angle = 75
+    time.sleep(.1)
+    '''
 
 pca.deinit()
 
