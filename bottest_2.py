@@ -2,7 +2,7 @@ from __future__ import division
 
 import time
 #import board
-#from board import SCL, SDA
+from board import SCL, SDA
 #import picamera
 #import numpy as np
 import io
