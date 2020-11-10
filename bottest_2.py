@@ -23,8 +23,8 @@ pca = PCA9685(i2c)
 pca.frequency = 50
 
 #Set up servos
-hammerServo = servo.Servo(pca.channels[0], min_pulse=400, max_pulse=2400)
-sweepServo = servo.Servo(pca.channels[1], min_pulse=400, max_pulse=2400)
+hammerServo = servo.Servo(pca.channels[3], min_pulse=400, max_pulse=2400)
+sweepServo = servo.Servo(pca.channels[0], min_pulse=400, max_pulse=2400)
 sweepServoAngle = 90
 sweepServo.angle = sweepServoAngle
 hammerServoAngle = 90
