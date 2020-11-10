@@ -13,8 +13,14 @@ side = servo.Servo(pca.channels[0])
 updown = servo.Servo(pca.channels[3])
 
 side.angle = 180
-updown.angle = 0
+updown.angle = 30
 
+input()
+
+side.angle = 0
+
+input()
+side.angle = 90
 input()
 
 def left():
@@ -31,6 +37,7 @@ def right():
 
 
 while True:
+    input()
     left()
     side.angle = 75
     time.sleep(.1)
