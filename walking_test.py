@@ -32,6 +32,10 @@ def right():
 
 
 left()
+side.angle = 0
+time.sleep(.1)
+input()
+
 right()
 
 pca.deinit()
