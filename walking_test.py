@@ -12,16 +12,16 @@ pca.frequency = 50
 side = servo.Servo(pca.channels[0])
 updown = servo.Servo(pca.channels[3])
 
+side.angle = 180
+updown.angle = 0
+
+input()
 
 def left():
-    side.angle = 180
-    time.sleep(.1)
-    updown.angle = 0
-    time.sleep(.1)
-    side.angle = 90
-    time.sleep(.1)
-    updown.angle = 30
-    time.sleep(.1)
+    while i < 90:
+        side.angle = 180-i
+        servo.angle = 0
+
 
 
 
