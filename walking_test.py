@@ -17,7 +17,9 @@ side.angle = 0
 updown.angle = 0
 input()
 
-
+side.angle = 90
+updown.angle = 90
+input()
 
 
 pca.deinit()
