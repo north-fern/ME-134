@@ -18,7 +18,7 @@ updown.angle = 0
 input()
 
 def left():
-    while i < 90:
+    for i in range(90):
         side.angle = 180-i
         servo.angle = 0
 
