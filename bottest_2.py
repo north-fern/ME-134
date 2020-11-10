@@ -7,9 +7,9 @@ from board import SCL, SDA
 #import numpy as np
 import io
 import pulseio
-#from adafruit_motor import servo
+from adafruit_motor import servo
 import busio
-#from adafruit_pca9685 import PCA9685
+from adafruit_pca9685 import PCA9685
 
 width = 100
 height = 100
