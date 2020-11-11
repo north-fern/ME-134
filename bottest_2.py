@@ -99,14 +99,14 @@ def SweepArm(direction):
 
 
     if (direction == 'right'):
-        while(sweepServoAngle > 5):
+        while(sweepServoAngle > 15):
             sweepServoAngle = sweepServoAngle-1
             sweepServo.angle = sweepServoAngle
             print("SweepArm:" + str(sweepServoAngle))
             time.sleep(0.03)
 
     if (direction == 'left'):
-        while(sweepServoAngle < 175):
+        while(sweepServoAngle < 165):
             sweepServoAngle = sweepServoAngle+1
             sweepServo.angle = sweepServoAngle
             print("SweepArm:" + str(sweepServoAngle))
