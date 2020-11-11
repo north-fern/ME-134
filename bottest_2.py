@@ -91,7 +91,7 @@ def ResetArm():
 
 def SweepArm(direction):
     global hammerServoAngle, sweepServoAngle
-    while (hammerServoAngle < 90):
+    while (hammerServoAngle > 90):
         hammerServoAngle = hammerServoAngle - 1
         hammerServo.angle = hammerServoAngle
         print("HammerArm:" + str(hammerServoAngle))
