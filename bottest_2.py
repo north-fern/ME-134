@@ -70,8 +70,8 @@ def TurnLeft():
         
 def ResetArm():
     global hammerServoAngle, sweepServoAngle
-    while (hammerServoAngle > 90):
-        hammerServoAngle = hammerServoAngle - 1
+    while (hammerServoAngle < 180):
+        hammerServoAngle = hammerServoAngle + 1
         hammerServo.angle = hammerServoAngle
         print("HammerArm:" + str(hammerServoAngle))
         time.sleep(0.02)
@@ -91,8 +91,8 @@ def ResetArm():
 
 def SweepArm(direction):
     global hammerServoAngle, sweepServoAngle
-    while (hammerServoAngle < 180):
-        hammerServoAngle = hammerServoAngle + 1
+    while (hammerServoAngle < 90):
+        hammerServoAngle = hammerServoAngle - 1
         hammerServo.angle = hammerServoAngle
         print("HammerArm:" + str(hammerServoAngle))
         time.sleep(0.02)
