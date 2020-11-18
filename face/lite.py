@@ -5,10 +5,10 @@ import re
 import os
 
 # the TFLite converted to be used with edgetpu
-modelPath = '<PATH_TO_MODEL>'
+modelPath = '/Desktop/ME-134/face/converted_tflite/model_unquant.tflite'
 
 # The path to labels.txt that was downloaded with your model
-labelPath = '<PATH_TO_LABELS>'
+labelPath = '/Desktop/ME-134/face/converted_tflite/labels.txt'
 
 # This function parses the labels.txt and puts it in a python dictionary
 def loadLabels(labelPath):
