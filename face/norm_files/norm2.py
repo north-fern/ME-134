@@ -1,5 +1,5 @@
 import tensorflow.keras
-from PIL import Image, ImageOps
+from Pillow import Image, ImageOps
 import numpy as np
 import time
 import cv2
