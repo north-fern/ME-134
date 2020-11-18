@@ -2,7 +2,7 @@ import tensorflow.keras
 from PIL import Image, ImageOps
 import numpy as np
 import time
-
+import cv2
 
 def select_image(index):
     # Disable scientific notation for clarity
