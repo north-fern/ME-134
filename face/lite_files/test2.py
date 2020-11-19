@@ -10,7 +10,7 @@ def select_image(index):
     np.set_printoptions(suppress=True)
 
     # Load the model
-    model = tf.contrib.lite.Interpreter(model_path="model_unquant.tflite")
+    model = tf.lite.Interpreter(model_path="model_unquant.tflite")
 
 
     # Create the array of the right shape to feed into the keras model
