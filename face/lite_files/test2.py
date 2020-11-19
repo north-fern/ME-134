@@ -1,6 +1,6 @@
 import tensorflow.keras
 
-from Pillow import Image, ImageOps
+from PIL import Image, ImageOps
 import numpy as np
 import time
 import cv2
