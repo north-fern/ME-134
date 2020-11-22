@@ -1,3 +1,23 @@
+'''
+
+Morgan Strong
+code from Teachable Machines page
+edited based on feedback on using tensorflow.lite instead
+https://heartbeat.fritz.ai/running-tensorflow-lite-image-classification-models-in-python-92ef44b4cd47
+
+some errors encountered, does not fully work. error thrown when executing tensorflow, now has issues with an unknown symbol
+ImportError: /home/pi/Desktop/tf_pi/env/lib/python3.7/site-packages/tensorflow_core/lite/python/interpreter_wrapper/_tensorflow_wrap_interpreter_wrapper.so: undefined symbol: _ZN6tflite12tensor_utils24NeonVectorScalarMultiplyEPKaifPf
+
+unknown how to fix; based on github comments it should be OK...
+https://github.com/tensorflow/tensorflow/issues/19319
+https://github.com/tensorflow/tensorflow/issues/21855
+
+the models (both regular and lite) are attached, which is trained for eyebrows up, down, right wink, left wink, and neutral
+currently it takes a picture and starts loading the model, but hits the unknown symbol and fails. 
+'''
+
+
+
 #import tensorflow.keras
 import tensorflow as tf
 from PIL import Image, ImageOps
@@ -10,6 +30,8 @@ def select_image(index):
     np.set_printoptions(suppress=True)
 
     # Load the model
+    #error here first, removed the "tf.contrib" and changed to tf.lite as contrib had no lite, but tf did
+    #https://github.com/tensorflow/tensorflow/issues/15401
     model = tf.lite.Interpreter(model_path="model_unquant.tflite")
 
 
@@ -57,4 +79,6 @@ while True:
     time.sleep(.5)
     index = index + 1
     print(index)
+
+    ## from here, we would actuate the motors 
 
