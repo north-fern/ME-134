@@ -71,10 +71,11 @@ class Hexapod:
     even = 2
     odd = 1
 
-    def __init__(self,step_size,num_step,step_height):
+    def __init__(self,step_size,num_step,step_height, tall):
         self.step_size=step_size
         self.num_step=num_step
         self.step_height=step_height
+        self.tall = False
     def gait_trajectory(self,leg_height):
         # leg_height: z distance from shoulder to feet when walking, fixed
         y=np.linspace(-step_size,step_size,num_step)
@@ -124,7 +125,7 @@ class Hexapod:
             j+=1
                 actuate(legs)
                 
-    def robot_raise_5_clicks():
+    def robot_raise_5_clicks(self):
         for leg in legs:
             for joint in leg.joints:
                 if leg.joint != leg.shoulder:
@@ -133,7 +134,7 @@ class Hexapod:
         robot.tall = True
 
 
-    def robot_lower_5_clicks():
+    def robot_lower_5_clicks(self):
         for leg in legs:
             for joint in leg.joints:
                 if leg.joint != leg.shoulder:
@@ -142,20 +143,20 @@ class Hexapod:
         robot.tall = False
 
 
-    def lift_leg(legNUM):
+    def lift_leg(self, legNUM):
         leg[legNUM].knee.currAngle += leg_lift_amt
         leg[legNUM].knee.angle = leg[legNUM].knee.currAngle
 
-    def lower_leg(legNUM):
+    def lower_leg(self, legNUM):
         leg[legNUM].knee.currAngle -=leg_lift_amt
         leg[legNUM].knee.angle = leg[legNUM].knee.currAngle
 
-    def move_leg_forward_WALL(legNUM):
+    def move_leg_forward_WALL(self, legNUM):
         lift_leg(legNUM)
         leg[legNUM].shoulder.angle = shoulder_fully_forward
         lower_leg(legNUM)
 
-    def move_leg_forward_WALL(legNUM):
+    def move_leg_forward_WALL(self, legNUM):
         lift_leg(legNUM)
         if legNUM < 3:
             leg[legNUM].shoulder.currAngle = shoulder_fully_forward_right
@@ -164,7 +165,7 @@ class Hexapod:
         actuate(legs)
         lower_leg(legNUM) 
 
-    def lift_forward(legNUM):
+    def lift_forward(self, legNUM):
         leg[legNUM].foot.currAngle += waddle_foot
         actuate(legs)
         if legNUM < 3:
@@ -175,14 +176,14 @@ class Hexapod:
         leg[legNUM].foot.currAngle -= waddle_foot
         actuate(legs)  
 
-    def push_backward(legNUM):
+    def push_backward(self, legNUM):
         if legNUM < 3:
             leg[legNUM].shoulder.currAngle += waddle_shoulder
         else:
             leg[legNUM].shoulder.currAngle -=waddle_shoulder
         actuate(legs)
 
-    def waddle_step():
+    def waddle_step(self):
         lift_forward(0)
         lift_forward_(5)
         push_backward_right(2)
@@ -193,9 +194,9 @@ class Hexapod:
         push_backward_left(5)    
 
 
-    def first_legs_climb_wall():
+    def first_legs_climb_wall(self):
          ## check that we are tall
-        if tall == False:
+        if self.tall == False:
             robot_raise_5_clicks()
         ##raise middle legs
         ## check numbers to make sure they go to correct legs!!
@@ -205,15 +206,16 @@ class Hexapod:
         move_leg_forward_WALL(0)
         move_leg_forward_WALL(3)
 
-    def last_legs_climb_wall():
+    def last_legs_climb_wall(self):
         ## move front legs one at a time
         move_leg_forward_WALL(2)
         move_leg_forward_WALL(5)
-    def MoveJoint(jointNo,legNo,incAngle,dir):
+    
+    def MoveJoint(self, jointNo,legNo,incAngle,dir):
     leg[legNo].joints[jointNo].currAngle += incAngle*dir
     #0 foot; 1 knee; 2 shoulder
 
-    def MoveJointSet(goalAngle,incAngle,jointNo,legSet,dir):
+    def MoveJointSet(self, goalAngle,incAngle,jointNo,legSet,dir):
         for k in range(goalAngle/incAngle):
             for i in range(len(LEGS)):
                 if i % legSet == 0:
@@ -221,12 +223,12 @@ class Hexapod:
             actuate(legs)
 
 
-    def even_legs_turn():
+    def even_legs_turn(self):
         MoveJointSet(goalFoot,incAngle,footNo,even,up)
         MoveJointSet(goalShoulder,incAngle,shoulderNo,even,up)
         MoveJointSet(goalFoot,incAngle,footNo,even,down)
 
-    def odd_legs_turn():
+    def odd_legs_turn(self):
         MoveJointSet(goalFoot,incAngle,footNo,odd,up)
         MoveJointSet(goalShoulder,incAngle,shoulderNo,odd,up)
         MoveJointSet(goalFoot,incAngle,footNo,odd,down)
