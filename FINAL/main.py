@@ -2,7 +2,7 @@
 
 from xbox_controller import XboxController
 from debounce import debounce
-from robot import Robot
+from robot2 import Robot
 import actuation
 import time
 from adafruit_servokit import ServoKit
@@ -29,7 +29,7 @@ raiseLowerTimeout = 0.5
 
 
 def main():
-    robot = Robot()
+    robot = Hexapod()
     controller = XboxController()
 
     def forward():
