@@ -29,10 +29,11 @@ raiseLowerTimeout = 0.5
 
 
 def main():
-    robot = Hexapod()
+    robot = Hexapod(15,10,15) # gait length, number of steps, gait height
     controller = XboxController()
 
     def forward():
+        # check for wall for auto mode
         debounce(robot.forward, moveTimeout)
 
     def backward():
