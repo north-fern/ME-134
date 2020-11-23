@@ -36,23 +36,23 @@ def main():
         # check for wall for auto mode
         debounce(robot.forward, moveTimeout)
 
-    def backward():
-        debounce(robot.backward, moveTimeout)
+    def waddle():
+        debounce(robot.waddle_step, moveTimeout)
 
     def turnLeft():
-        debounce(robot.turnLeft, moveTimeout)
+        debounce(robot.even_legs_turn, moveTimeout)
 
     def turnRight():
-        debounce(robot.turnRight, moveTimeout)
+        debounce(robot.odd_legs_turn, moveTimeout)
 
     def up():
-        debounce(robot.up, raiseLowerTimeout)
+        debounce(robot.robot_raise_5_clicks, raiseLowerTimeout)
 
     def down():
-        debounce(robot.down, raiseLowerTimeout)
+        debounce(robot.robot_raise_5_clicks, raiseLowerTimeout)
 
     controller.setupControlCallback(controller.XboxControls.Y, forward)
-    controller.setupControlCallback(controller.XboxControls.A, backward)
+    controller.setupControlCallback(controller.XboxControls.A, waddle)
     controller.setupControlCallback(controller.XboxControls.X, turnLeft)
     controller.setupControlCallback(controller.XboxControls.B, turnRight)
     controller.setupControlCallback(controller.XboxControls.RTRIGGER, up)
