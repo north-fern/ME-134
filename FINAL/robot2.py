@@ -60,6 +60,16 @@ class Hexapod:
     houlder_fully_forward_right = 0
     waddle_foot = 5
     waddle_shoulder = 20
+    footNo = 0
+    kneeNo = 1
+    shoulderNo = 2
+    up = 1
+    down = -1
+    goalFoot = 90
+    incAngle = 10
+    goalShoulder = 90
+    even = 2
+    odd = 1
 
     def __init__(self,step_size,num_step,step_height):
         self.step_size=step_size
@@ -199,4 +209,25 @@ class Hexapod:
         ## move front legs one at a time
         move_leg_forward_WALL(2)
         move_leg_forward_WALL(5)
+    def MoveJoint(jointNo,legNo,incAngle,dir):
+    leg[legNo].joints[jointNo].currAngle += incAngle*dir
+    #0 foot; 1 knee; 2 shoulder
+
+    def MoveJointSet(goalAngle,incAngle,jointNo,legSet,dir):
+        for k in range(goalAngle/incAngle):
+            for i in range(len(LEGS)):
+                if i % legSet == 0:
+                    MoveJoint(jointNo,i,k*incAngle,dir)
+            actuate(legs)
+
+
+    def even_legs_turn():
+        MoveJointSet(goalFoot,incAngle,footNo,even,up)
+        MoveJointSet(goalShoulder,incAngle,shoulderNo,even,up)
+        MoveJointSet(goalFoot,incAngle,footNo,even,down)
+
+    def odd_legs_turn():
+        MoveJointSet(goalFoot,incAngle,footNo,odd,up)
+        MoveJointSet(goalShoulder,incAngle,shoulderNo,odd,up)
+        MoveJointSet(goalFoot,incAngle,footNo,odd,down)
 
