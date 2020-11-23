@@ -84,33 +84,34 @@ class Hexapod:
         #prepare for walking move 2,4,6 forward half angle range
         for i in range(3):
             leg[i+1].shoulder.currAngle-=angle_range/2
-        while True:
-            if sensor==1: #stops walking function/reset angles
-                for i in range(6):
-                    leg[i].shoulder.currAngle=leg[i].shoulder.startAngle
-                    leg[i].knee.currentAngle=leg[i].knee.startAngle
-                    leg[i].foot.currentAngle=leg[i].foot.startAngle
-                    actuate(legs)
-                break
-            j = 0
-            for i in range(num_step): # walking
-                #when j is even, 246 forwards, 135 backwards
-                if j%2==0 and i%2==0:
-                    leg[i].shoulder.currAngle-=angle_step
-                    leg[i].knee.currAngle+=(IK(leg_x,z[i])[0]-135)
-                    # -135 to get the angle movement, might need to be adjusted
-                    # depends on the servo orientation
-                    leg[i].foot.currAngle += (IK(leg_x, z[i])[1]-135)
-                elif j%2==0 and i%2==1:
-                    leg[i].shoulder.currAngle += angle_step
-                # when j is odd, 135 forwards, 246 backwards
-                elif j%2==1 and i%2==0:
-                    leg[i].shoulder.currAngle += angle_step
-                elif j%2==1 and i%2==1:
-                    leg[i].shoulder.currAngle -= angle_step
-                    leg[i].knee.currAngle += (IK(leg_x, z[i])[0]-135)
-                    leg[i].foot.currAngle += (IK(leg_x, z[i])[1]-135)
-                j+=1
+            
+        '''
+        if sensor==1: #stops walking function/reset angles
+            for i in range(6):
+                leg[i].shoulder.currAngle=leg[i].shoulder.startAngle
+                leg[i].knee.currentAngle=leg[i].knee.startAngle
+                leg[i].foot.currentAngle=leg[i].foot.startAngle
+                actuate(legs)
+            '''
+        j = 0
+        for i in range(num_step): # walking
+            #when j is even, 246 forwards, 135 backwards
+            if j%2==0 and i%2==0:
+                leg[i].shoulder.currAngle-=angle_step
+                leg[i].knee.currAngle+=(IK(leg_x,z[i])[0]-135)
+                # -135 to get the angle movement, might need to be adjusted
+                # depends on the servo orientation
+                leg[i].foot.currAngle += (IK(leg_x, z[i])[1]-135)
+            elif j%2==0 and i%2==1:
+                leg[i].shoulder.currAngle += angle_step
+            # when j is odd, 135 forwards, 246 backwards
+            elif j%2==1 and i%2==0:
+                leg[i].shoulder.currAngle += angle_step
+            elif j%2==1 and i%2==1:
+                leg[i].shoulder.currAngle -= angle_step
+                leg[i].knee.currAngle += (IK(leg_x, z[i])[0]-135)
+                leg[i].foot.currAngle += (IK(leg_x, z[i])[1]-135)
+            j+=1
                 actuate(legs)
                 
     def robot_raise_5_clicks():
